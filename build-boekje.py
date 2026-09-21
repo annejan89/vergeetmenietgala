@@ -249,6 +249,19 @@ p{{text-wrap:pretty}}
 .beeld-dots button{{width:26px;height:4px;padding:0;border:0;cursor:pointer;background:rgba(255,255,255,.55)}}
 .beeld-dots button.is-on{{background:var(--geel)}}
 
+/* subtiele parallax: het beeld loopt iets trager dan de pagina.
+   Scroll-driven animaties; browsers zonder view() tonen alles gewoon stil. */
+@supports (animation-timeline: view()){{
+  @media (prefers-reduced-motion:no-preference){{
+    .spread-beeld{{animation:parallax-beeld linear both;animation-timeline:view();animation-range:entry 0% exit 100%}}
+    .spread-tekst{{animation:parallax-tekst linear both;animation-timeline:view();animation-range:entry 10% exit 90%}}
+    .omslag-bloem{{animation:parallax-bloem linear both;animation-timeline:view();animation-range:entry 0% exit 100%}}
+    @keyframes parallax-beeld{{from{{transform:translateY(18px)}}to{{transform:translateY(-18px)}}}}
+    @keyframes parallax-tekst{{from{{transform:translateY(8px)}}to{{transform:translateY(-8px)}}}}
+    @keyframes parallax-bloem{{from{{transform:translateY(-24px)}}to{{transform:translateY(40px)}}}}
+  }}
+}}
+
 .spread-num{{display:flex;align-items:baseline;gap:12px;font-family:'PP Frama','Source Sans 3',sans-serif;
   font-weight:200;font-size:clamp(40px,5vw,72px);line-height:1;color:var(--geel)}}
 .spread-num span{{font-family:'Source Sans 3',sans-serif;font-weight:400;font-size:16px;
