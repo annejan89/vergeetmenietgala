@@ -115,7 +115,7 @@ p{text-wrap:pretty}
 .beeld img{width:100%;height:100%;object-fit:cover}
 .beeld--leeg::after{content:'';position:absolute;inset:0;background:url('assets/bloem-monogram.svg') center/96px no-repeat;opacity:.18}
 .beeld--slider img{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease}
-.beeld--slider img.is-on{opacity:1;animation:kenburns 9s ease-out both}
+.beeld--slider img.is-on{opacity:1;animation:kenburns 7s linear both}
 .beeld--slider img.is-on:nth-child(2){animation-name:kenburns-2}
 .beeld--slider img.is-on:nth-child(3){animation-name:kenburns-3}
 .beeld--slider img.is-on:nth-child(4){animation-name:kenburns-2}
@@ -623,7 +623,12 @@ document.querySelectorAll('[data-slider]').forEach(sl=>{
     [...dots.children].forEach((d,k)=>d.classList.toggle('is-on',k===n));
     if(bij) bij.textContent=beelden[n].alt;
   }
-  function start(){ stop(); if(!stil.matches) timer=setInterval(()=>toon((i+1)%beelden.length),6000); }
+  function start(){
+    stop();
+    if(stil.matches) return;
+    toon(i);                                  // zoom opnieuw starten bij het beeld dat nu in beeld komt
+    timer=setInterval(()=>toon((i+1)%beelden.length),6000);
+  }
   function stop(){ if(timer){clearInterval(timer);timer=null;} }
   new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting?start():stop()),{threshold:.25}).observe(sl);
 });
