@@ -321,7 +321,7 @@ p{{text-wrap:pretty}}
 <section class="omslag" id="omslag" data-titel="Omslag">
   <div class="in">
     <img class="omslag-bloem" src="assets/bloem-patroon.svg" alt="">
-    <img class="omslag-logo" src="assets/logo-zwart.png" alt="Vergeet Mij Niet Gala">
+    <img class="omslag-logo" src="assets/logo-geel.png" alt="Vergeet Mij Niet Gala">
     <p class="omslag-lbl">Het eerste culinaire gala voor Alzheimer Nederland</p>
     <h1>Het veilingboekje</h1>
     <p class="datum">06.10.2026</p>
