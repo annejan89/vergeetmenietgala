@@ -136,6 +136,15 @@ p{text-wrap:pretty}
     @keyframes parallax-beeld{from{transform:translateY(18px)}to{transform:translateY(-18px)}}
     @keyframes parallax-tekst{from{transform:translateY(8px)}to{transform:translateY(-8px)}}
     @keyframes parallax-bloem{from{transform:translateY(-24px)}to{transform:translateY(40px)}}
+
+    /* naast elkaar op desktop: het beeld loopt voor, de tekst blijft iets achter.
+       Het verschil tussen de twee is wat je ziet, niet de beweging zelf. */
+    @media(min-width:960px){
+      .spread-beeld{animation-name:parallax-beeld-groot}
+      .spread-tekst{animation-name:parallax-tekst-groot;animation-range:entry 0% exit 100%}
+      @keyframes parallax-beeld-groot{from{transform:translateY(30px)}to{transform:translateY(-30px)}}
+      @keyframes parallax-tekst-groot{from{transform:translateY(10px)}to{transform:translateY(-10px)}}
+    }
   }
 }
 
