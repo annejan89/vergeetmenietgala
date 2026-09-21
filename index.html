@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vergeet Mij Niet Gala 2026</title>
+<meta name="description" content="Twee varianten van het digitale boekje voor het Vergeet Mij Niet Gala op 6 oktober 2026.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/logo-geel.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair:wght@500&family=Source+Sans+3:wght@300;400&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'PP Frama';src:url('fonts/PPFrama-Extralight.otf') format('opentype');font-weight:200;font-style:normal;font-display:swap}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#27251c;color:#f6f4eb;font-family:'Source Sans 3',system-ui,sans-serif;font-weight:300;
+  font-size:18px;line-height:1.55;min-height:100vh;display:flex;align-items:center;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1000px;margin:0 auto;padding:64px 20px;position:relative;width:100%}
+.bloem{position:absolute;right:-40px;top:-40px;width:min(320px,40vw);opacity:.14;pointer-events:none}
+.lbl{color:#fbd242;font-size:15px;text-transform:uppercase;letter-spacing:.12em}
+h1{font-family:Playfair,Georgia,serif;font-weight:500;font-size:clamp(34px,6vw,60px);line-height:1.05;margin:14px 0 8px;max-width:16ch}
+.datum{font-family:'PP Frama','Source Sans 3',sans-serif;font-weight:200;font-size:clamp(44px,9vw,110px);
+  line-height:1;color:#fbd242;margin:20px 0 10px}
+.keuze{display:grid;gap:20px;margin-top:44px}
+@media(min-width:760px){.keuze{grid-template-columns:1fr 1fr}}
+.kaart{display:block;text-decoration:none;color:#27251c;background:#f6f4eb;padding:28px;
+  border:1px solid transparent;transition:background .2s,transform .2s}
+.kaart:hover{background:#fff;transform:translateY(-3px)}
+.kaart h2{font-family:Playfair,Georgia,serif;font-weight:500;font-size:28px;line-height:1.15;margin-bottom:10px}
+.kaart p{font-size:17px}
+.kaart .ga{display:inline-block;margin-top:18px;background:#fbd242;padding:10px 20px;font-size:16px}
+.voet{margin-top:40px;font-size:15px;color:rgba(246,244,235,.7)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <img class="bloem" src="assets/bloem-patroon-geel.svg" alt="">
+  <p class="lbl">Het eerste culinaire gala voor Alzheimer Nederland</p>
+  <h1>Vergeet Mij Niet Gala</h1>
+  <p class="datum">06.10.2026</p>
+  <p>Grand Ballroom, Hotel Okura Amsterdam. Twee varianten van het digitale boekje.</p>
+
+  <div class="keuze">
+    <a class="kaart" href="site.html">
+      <h2>Programmaboekje</h2>
+      <p>Een pagina: het programma van de avond en alle kavels in een raster. Kort en snel te scannen.</p>
+      <span class="ga">Bekijk variant 1</span>
+    </a>
+    <a class="kaart" href="boekje.html">
+      <h2>Veilingboekje</h2>
+      <p>Een spread per kavel met groot beeld en grote tekst, bladerbaar, met een inhoudsopgave die meeloopt.</p>
+      <span class="ga">Bekijk variant 2</span>
+    </a>
+  </div>
+
+  <p class="voet">Stichting Vergeet Mij Niet Gala &middot; vergeetmijnietgala.nl</p>
+</div>
+</body>
+</html>

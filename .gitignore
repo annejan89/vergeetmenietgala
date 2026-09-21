@@ -1,0 +1,6 @@
+# bronbestanden, te groot of niet nodig in de repo
+*.pptx
+_orig/
+.DS_Store
+__pycache__/
+*.JPG
