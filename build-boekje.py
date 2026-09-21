@@ -190,13 +190,13 @@ p{{text-wrap:pretty}}
 .in{{max-width:1120px;margin:0 auto;padding:0 clamp(20px,4vw,56px)}}
 
 /* omslag */
-.omslag{{background:var(--ink);color:var(--beige);padding:clamp(72px,14vh,140px) 0 clamp(64px,12vh,120px);position:relative;overflow:hidden}}
+.omslag{{background:var(--blauw);color:var(--ink);padding:clamp(72px,14vh,140px) 0 clamp(64px,12vh,120px);position:relative;overflow:hidden}}
 .omslag .in{{position:relative}}
-.omslag-bloem{{position:absolute;right:-60px;top:-60px;width:min(420px,45vw);opacity:.14;pointer-events:none}}
-.omslag-lbl{{color:var(--geel);font-size:16px;text-transform:uppercase;letter-spacing:.12em}}
-.omslag h1{{margin:20px 0 28px;font-size:clamp(44px,7vw,92px);color:var(--beige);max-width:14ch}}
+.omslag-bloem{{position:absolute;right:-60px;top:-60px;width:min(420px,45vw);opacity:.2;pointer-events:none}}
+.omslag-lbl{{color:var(--ink-60);font-size:16px;text-transform:uppercase;letter-spacing:.12em}}
+.omslag h1{{margin:20px 0 28px;font-size:clamp(44px,7vw,92px);color:var(--ink);max-width:14ch}}
 .omslag .datum{{font-family:'PP Frama','Source Sans 3',sans-serif;font-weight:200;
-  font-size:clamp(56px,13vw,180px);line-height:1;color:var(--geel);letter-spacing:.01em}}
+  font-size:clamp(56px,13vw,180px);line-height:1;color:var(--ink);letter-spacing:.01em}}
 .omslag p.plaats{{margin-top:20px;font-size:clamp(19px,2vw,26px);max-width:34ch}}
 .golf{{display:block;width:100%;height:clamp(28px,4vw,52px)}}
 
@@ -319,14 +319,14 @@ p{{text-wrap:pretty}}
 
 <section class="omslag" id="omslag" data-titel="Omslag">
   <div class="in">
-    <img class="omslag-bloem" src="assets/bloem-patroon-geel.svg" alt="">
+    <img class="omslag-bloem" src="assets/bloem-patroon.svg" alt="">
     <p class="omslag-lbl">Het eerste culinaire gala voor Alzheimer Nederland</p>
     <h1>Het veilingboekje</h1>
     <p class="datum">06.10.2026</p>
     <p class="plaats">Grand Ballroom, Hotel Okura Amsterdam. {aantal} kavels, in een ronde, geveild door Mark Grol.</p>
   </div>
 </section>
-<svg class="golf" viewBox="0 0 1440 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0H1440V0Q1080 40 720 40Q360 40 0 0Z" fill="#27251C"></path></svg>
+<svg class="golf" viewBox="0 0 1440 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0H1440V0Q1080 40 720 40Q360 40 0 0Z" fill="#D2EDFF"></path></svg>
 
 <section class="pagina" id="programma" data-titel="Het programma">
   <div class="in">
