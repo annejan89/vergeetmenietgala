@@ -173,6 +173,7 @@ h4{font-size:16px}
 /* kavel in het groot: op mobiel schermvullend, op desktop een venster */
 .kv-dialog{width:100%;max-width:none;height:100%;max-height:none;margin:0;padding:0;border:0;
   background:var(--wit);color:var(--ink);overflow:hidden}
+.kv-dialog:focus,.kv-dialog:focus-visible{outline:none}
 .kv-dialog::backdrop{background:rgba(39,37,28,.6);backdrop-filter:blur(3px)}
 .dlg-in{height:100%;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
 .dlg-tekst{padding:28px 20px 40px}
@@ -193,7 +194,7 @@ h4{font-size:16px}
 /* het fotoraster: vierkanten, twee kolommen */
 .dlg-in{display:flex;flex-direction:column}
 /* mobiel: de beelden naast elkaar, veegbaar; desktop maakt er een raster van */
-.dlg-raster{order:-1;flex:none;display:flex;align-items:flex-start;gap:6px;padding:0;overflow-x:auto;scroll-snap-type:x mandatory;
+.dlg-raster{order:-1;flex:none;display:flex;align-items:flex-start;gap:8px;padding:8px 8px 0;overflow-x:auto;scroll-snap-type:x mandatory;
   -webkit-overflow-scrolling:touch;scrollbar-width:none}
 .dlg-raster::-webkit-scrollbar{display:none}
 .dlg-raster img{flex:0 0 88%;aspect-ratio:1/1;object-fit:cover;background:var(--beige-donker);
@@ -237,14 +238,14 @@ h4{font-size:16px}
   .dlg-in{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);grid-template-rows:minmax(0,1fr);
     max-height:88vh;overflow:hidden;padding-bottom:0}
   .dlg-raster{order:0;display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:minmax(150px,1fr);
-    overflow-x:hidden;padding:0;gap:6px;align-self:stretch}
+    overflow-x:hidden;padding:8px 8px 8px 0;gap:8px;align-self:stretch}
   .dlg-raster img{aspect-ratio:auto;height:100%;min-height:0}
   .dlg-raster img{flex:none;width:100%}
   .dlg-raster img:first-child{grid-column:1/-1}
   .dlg-tekst{padding:clamp(40px,4vw,60px);overflow-y:auto}
   .dlg-tekst h3{font-size:clamp(30px,2.6vw,42px)}
   .dlg-tekst>p{font-size:22px}
-  .dlg-raster{padding:0;overflow-y:auto;align-content:stretch;gap:6px}
+  .dlg-raster{padding:8px 8px 8px 0;overflow-y:auto;align-content:stretch;gap:8px}
   .dlg-raster:empty{display:none}
   .dlg-sluit{position:absolute;top:0;right:0;width:56px;height:56px}
   .dlg-nav{position:absolute;left:auto;right:56px;top:0;bottom:auto;width:auto;height:56px;
