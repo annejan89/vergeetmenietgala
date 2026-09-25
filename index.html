@@ -209,18 +209,17 @@ h4{font-size:16px}
   .vw-in{max-height:88vh;padding:clamp(48px,5vw,72px)}
   .vw-in p,.vw-in li{font-size:18px}
 }
-.vw-lead{max-width:60ch;margin-top:16px;font-size:19px}
-.vw-link{background:none;border:0;padding:0;font:inherit;color:var(--ink);cursor:pointer;
-  text-decoration:underline;text-decoration-color:var(--geel);text-decoration-thickness:3px;text-underline-offset:4px}
-.vw-link:hover{text-decoration-color:var(--ink)}
-.vw-punten{list-style:none;display:grid;gap:24px 40px;margin-top:clamp(32px,5vh,52px)}
-.vw-punten li{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:baseline}
+.vw-lead{max-width:60ch;margin-top:16px;margin-bottom:24px;font-size:19px}
+.vw-punten{list-style:none;margin-top:clamp(32px,5vh,52px)}
+.vw-punten li{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:baseline;
+  break-inside:avoid;margin-bottom:24px}
 .vw-punten b{font-family:'PP Frama','Source Sans 3',sans-serif;font-weight:200;font-size:30px;line-height:1;color:var(--ink-60)}
 .vw-punten h3{font-size:19px;margin-bottom:4px}
 .vw-punten p{font-size:17px;line-height:1.5;max-width:52ch}
 .vw-slot{margin-top:clamp(32px,5vh,52px);padding-top:20px;border-top:1px solid var(--lijn);font-size:17px}
 .vw-slot b{font-family:Playfair,serif;font-weight:500;font-size:21px}
-@media(min-width:791px){.vw-punten{grid-template-columns:1fr 1fr}}
+.vw-knop{margin-top:24px}
+@media(min-width:791px){.vw-punten{columns:2;column-gap:48px}}   /* eerst de linkerkolom vol, dan rechts */
 .kv-dialog::backdrop{background:rgba(39,37,28,.6);backdrop-filter:blur(3px)}
 .dlg-in{height:100%;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
 .dlg-tekst{padding:28px 20px 40px}
@@ -718,8 +717,7 @@ body.dlg-open{overflow:hidden}
 <section class="sec voorwaarden" id="voorwaarden">
   <div class="wrap">
     <h2>Veilingvoorwaarden<span class="streep"></span></h2>
-    <p class="vw-lead"><button type="button" class="vw-link" id="vw-open">Klik hier voor de uitgebreide voorwaarden.</button><br>
-      Bied mee en steun samen met ons het goede doel.</p>
+    <p class="vw-lead">Bied mee en steun samen met ons het goede doel.</p>
     <ol class="vw-punten">
       <li><b>1</b><div><h3>Bieden is bindend</h3><p>Een uitgebracht bod is bindend en kan in beginsel niet worden ingetrokken.</p></div></li>
       <li><b>2</b><div><h3>Ondertekening overeenkomst</h3><p>Direct na aanvaarding van het hoogste bod ondertekent de koper een overeenkomst. Met deze ondertekening verplicht de koper zich tot betaling van het volledige winnende bod.</p></div></li>
@@ -732,6 +730,7 @@ body.dlg-open{overflow:hidden}
       <li><b>9</b><div><h3>Beslissing veilingmeester</h3><p>Bij onduidelijkheid over een bod of het verloop van de veiling beslist de veilingmeester over de biedprocedure.</p></div></li>
     </ol>
     <p class="vw-slot">Door mee te bieden accepteert u de volledige veilingvoorwaarden van<br><b>Stichting Vergeet Mij Niet Gala</b></p>
+    <p class="vw-knop"><button type="button" class="btn btn-geel" id="vw-open">Uitgebreide voorwaarden</button></p>
   </div>
 </section>
 
