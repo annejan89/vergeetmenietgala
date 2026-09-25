@@ -4,10 +4,10 @@
 *.pdf
 *.mp4
 *.csv
-*.JPG
-*.webp
-!kavels/*.webp
+*.zip
 _orig/
 __pycache__/
 .DS_Store
-*.zip
+
+# aangeleverde bronfotos blijven lokaal
+Veilingkavels input (extern)/
