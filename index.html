@@ -149,6 +149,74 @@ h4{font-size:16px}
 .kv-dots{position:absolute;left:12px;bottom:12px;z-index:2;display:flex;gap:6px}
 .kv-dots button{width:22px;height:4px;padding:0;border:0;cursor:pointer;background:rgba(255,255,255,.55)}
 .kv-dots button.is-on{background:var(--geel)}
+
+/* de hele kaart is aanklikbaar; het hartje ligt erboven */
+.kv-open{position:absolute;inset:0;z-index:1;border:0;padding:0;background:transparent;cursor:pointer}
+.kv-open:focus-visible{outline:2px solid var(--ink);outline-offset:-4px}
+.kv-fav,.kv-dots{z-index:2}
+.kv-num{z-index:2}
+
+/* kavel in het groot: op mobiel schermvullend, op desktop een venster */
+.kv-dialog{width:100%;max-width:none;height:100%;max-height:none;margin:0;padding:0;border:0;
+  background:var(--wit);color:var(--ink);overflow:hidden}
+.kv-dialog::backdrop{background:rgba(39,37,28,.6);backdrop-filter:blur(3px)}
+.dlg-in{height:100%;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.dlg-beeld{position:relative;aspect-ratio:4/5;background:var(--beige-donker);overflow:hidden;max-height:62svh}
+.dlg-beeld .kv-foto{height:100%;aspect-ratio:auto}
+.dlg-beeld img{width:100%;height:100%;object-fit:cover}
+.dlg-tekst{padding:28px 20px 48px}
+.dlg-tekst .kv-ronde{display:block;font-size:14px;text-transform:uppercase;letter-spacing:.12em;color:var(--ink-60)}
+.dlg-tekst h3{font-family:Playfair,Georgia,serif;font-weight:500;font-size:clamp(28px,6.4vw,40px);
+  line-height:1.08;margin:10px 0 16px}
+.dlg-tekst>p{font-size:clamp(18px,4.4vw,21px);line-height:1.5;max-width:44ch}
+.dlg-tekst .kv-incl{margin-top:28px}
+.dlg-tekst .kv-incl-t{font-size:14px!important;margin-bottom:12px}
+.dlg-tekst .kv-incl li{font-size:17px;padding-left:24px;line-height:1.45}
+.dlg-tekst .kv-incl li::before{top:.6em;width:9px;height:9px}
+.dlg-tekst .kv-meta{margin-top:28px;font-size:14px!important;padding-top:16px}
+.dlg-tekst .kv-min{font-size:34px!important;margin-top:14px}
+.dlg-tekst .kv-door{margin-top:24px;font-size:22px}
+.dlg-hart{margin-top:28px;display:inline-flex;align-items:center;gap:10px;background:transparent;
+  border:1px solid var(--lijn-2);padding:11px 20px;font-family:'Source Sans 3',sans-serif;font-size:16px;
+  color:var(--ink);cursor:pointer;transition:background .2s,border-color .2s}
+.dlg-hart svg{width:18px;height:18px;fill:none;stroke:var(--ink);stroke-width:1.7}
+.dlg-hart:hover{background:var(--lijn)}
+.dlg-hart.is-fav{background:var(--geel);border-color:var(--geel)}
+.dlg-hart.is-fav svg{fill:var(--ink)}
+
+/* het kruisje: geel vlak, getekend kruis */
+.dlg-sluit{position:fixed;top:12px;right:12px;z-index:10;width:52px;height:52px;display:grid;place-items:center;
+  background:var(--geel);border:0;cursor:pointer;color:var(--ink);
+  box-shadow:0 0 0 1px rgba(39,37,28,.08);transition:background .2s,transform .2s}
+.dlg-sluit:hover{background:var(--geel-licht);transform:rotate(90deg)}
+.dlg-sluit svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round}
+@media (prefers-reduced-motion:reduce){.dlg-sluit:hover{transform:none}}
+
+/* bladeren tussen kavels */
+.dlg-nav{position:fixed;left:0;right:0;bottom:0;z-index:9;display:flex;align-items:center;justify-content:center;
+  gap:16px;padding:10px;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-top:1px solid var(--lijn)}
+.dlg-nav button{width:44px;height:44px;display:grid;place-items:center;background:transparent;
+  border:1px solid var(--lijn-2);cursor:pointer;color:var(--ink);transition:background .2s}
+.dlg-nav button:hover{background:var(--lijn)}
+.dlg-nav button[disabled]{opacity:.3;cursor:default}
+.dlg-nav svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6}
+.dlg-tel{min-width:12ch;text-align:center;font-size:15px;color:var(--ink-60);font-variant-numeric:tabular-nums}
+.dlg-in{padding-bottom:64px}
+
+@media(min-width:860px){
+  .kv-dialog{width:min(1100px,92vw);height:auto;max-height:88vh;margin:auto;border:1px solid var(--lijn)}
+  .dlg-in{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);padding-bottom:0;max-height:88vh}
+  .dlg-beeld{aspect-ratio:auto;max-height:none;height:100%}
+  .dlg-tekst{padding:clamp(36px,4vw,56px);overflow-y:auto}
+  .dlg-tekst h3{font-size:clamp(30px,2.6vw,42px)}
+  .dlg-tekst>p{font-size:22px}
+  .dlg-sluit{position:absolute;top:0;right:0;width:56px;height:56px}
+  .dlg-nav{position:absolute;left:auto;right:56px;top:0;bottom:auto;width:auto;border-top:0;
+    border-left:1px solid var(--lijn);border-bottom:1px solid var(--lijn);padding:6px 12px;gap:10px;background:transparent}
+  .dlg-nav button{width:38px;height:38px;border:0}
+  .dlg-tel{min-width:9ch;font-size:14px}
+}
+body.dlg-open{overflow:hidden}
 @media (prefers-reduced-motion:reduce){
   .kv-slider img{transition:none}
   .kv-slider img.is-on{animation:none}
@@ -287,6 +355,7 @@ h4{font-size:16px}
       <article class="kv" data-id="k17">
         <div class="kv-foto kv-foto--leeg"></div>
         <span class="kv-num">1</span>
+        <button class="kv-open" data-open="k17" aria-label="Bekijk kavel 1: KRUG Experience bij restaurant Flore**"></button>
         <button class="kv-fav" aria-label="Zet kavel 1 op mijn lijst" data-fav="k17"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.49 4.04 3 5.5l7 7Z"/></svg></button>
         <div class="kv-body">
           <span class="kv-ronde">Kavel 1</span>
@@ -302,6 +371,7 @@ h4{font-size:16px}
       <article class="kv" data-id="k07">
         <div class="kv-foto"><img src="kavels/k07.jpg" alt="Diner bij Da Vinci* met privé-optreden" loading="lazy"></div>
         <span class="kv-num">2</span>
+        <button class="kv-open" data-open="k07" aria-label="Bekijk kavel 2: Diner bij Da Vinci* met privé-optreden"></button>
         <button class="kv-fav" aria-label="Zet kavel 2 op mijn lijst" data-fav="k07"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.49 4.04 3 5.5l7 7Z"/></svg></button>
         <div class="kv-body">
           <span class="kv-ronde">Kavel 2</span>
@@ -317,6 +387,7 @@ h4{font-size:16px}
       <article class="kv" data-id="k14">
         <div class="kv-foto kv-foto--leeg"></div>
         <span class="kv-num">3</span>
+        <button class="kv-open" data-open="k14" aria-label="Bekijk kavel 3: Het Biertafelboek van Govert de Roos"></button>
         <button class="kv-fav" aria-label="Zet kavel 3 op mijn lijst" data-fav="k14"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.49 4.04 3 5.5l7 7Z"/></svg></button>
         <div class="kv-body">
           <span class="kv-ronde">Kavel 3</span>
@@ -332,6 +403,7 @@ h4{font-size:16px}
       <article class="kv" data-id="k02">
         <div class="kv-foto"><img src="kavels/k02.jpg" alt="Koetsentocht langs de Vecht" loading="lazy"></div>
         <span class="kv-num">4</span>
+        <button class="kv-open" data-open="k02" aria-label="Bekijk kavel 4: Koetsentocht langs de Vecht"></button>
         <button class="kv-fav" aria-label="Zet kavel 4 op mijn lijst" data-fav="k02"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.49 4.04 3 5.5l7 7Z"/></svg></button>
         <div class="kv-body">
           <span class="kv-ronde">Kavel 4</span>
@@ -347,6 +419,7 @@ h4{font-size:16px}
       <article class="kv" data-id="k03a">
         <div class="kv-foto"><img src="kavels/k03a.jpg" alt="Miniatuur KLM-huisje Rijksmuseum" loading="lazy"></div>
         <span class="kv-num">5A</span>
+        <button class="kv-open" data-open="k03a" aria-label="Bekijk kavel 5A: Miniatuur KLM-huisje Rijksmuseum"></button>
         <button class="kv-fav" aria-label="Zet kavel 5A op mijn lijst" data-fav="k03a"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.49 4.04 3 5.5l7 7Z"/></svg></button>
         <div class="kv-body">
           <span class="kv-ronde">Kavel 5A</span>
@@ -362,6 +435,7 @@ h4{font-size:16px}
       <article class="kv" data-id="k03b">
         <div class="kv-foto"><img src="kavels/k03b.jpg" alt="Miniatuur KLM-huisje Hotel Okura Amsterdam" loading="lazy"></div>
         <span class="kv-num">5B</span>
+        <button class="kv-open" data-open="k03b" aria-label="Bekijk kavel 5B: Miniatuur KLM-huisje Hotel Okura Amsterdam"></button>
         <button class="kv-fav" aria-label="Zet kavel 5B op mijn lijst" data-fav="k03b"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.49 4.04 3 5.5l7 7Z"/></svg></button>
         <div class="kv-body">
           <span class="kv-ronde">Kavel 5B</span>
@@ -377,6 +451,7 @@ h4{font-size:16px}
       <article class="kv" data-id="k04">
         <div class="kv-foto"><img src="kavels/k04.jpg" alt="De Burgemeester × Moët &amp; Chandon en The House of Caviar" loading="lazy"></div>
         <span class="kv-num">6</span>
+        <button class="kv-open" data-open="k04" aria-label="Bekijk kavel 6: De Burgemeester × Moët &amp; Chandon en The House of Caviar"></button>
         <button class="kv-fav" aria-label="Zet kavel 6 op mijn lijst" data-fav="k04"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.49 4.04 3 5.5l7 7Z"/></svg></button>
         <div class="kv-body">
           <span class="kv-ronde">Kavel 6</span>
@@ -392,6 +467,7 @@ h4{font-size:16px}
       <article class="kv" data-id="k12">
         <div class="kv-foto"><img src="kavels/k12.jpg" alt="Legends Lounge — PSV × Atlético Madrid" loading="lazy"></div>
         <span class="kv-num">7</span>
+        <button class="kv-open" data-open="k12" aria-label="Bekijk kavel 7: Legends Lounge — PSV × Atlético Madrid"></button>
         <button class="kv-fav" aria-label="Zet kavel 7 op mijn lijst" data-fav="k12"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.49 4.04 3 5.5l7 7Z"/></svg></button>
         <div class="kv-body">
           <span class="kv-ronde">Kavel 7</span>
@@ -407,6 +483,7 @@ h4{font-size:16px}
       <article class="kv" data-id="k13">
         <div class="kv-foto"><img src="kavels/k13.jpg" alt="Legends Lounge — PSV × Atlético Madrid" loading="lazy"></div>
         <span class="kv-num">8</span>
+        <button class="kv-open" data-open="k13" aria-label="Bekijk kavel 8: Legends Lounge — PSV × Atlético Madrid"></button>
         <button class="kv-fav" aria-label="Zet kavel 8 op mijn lijst" data-fav="k13"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.49 4.04 3 5.5l7 7Z"/></svg></button>
         <div class="kv-body">
           <span class="kv-ronde">Kavel 8</span>
@@ -422,6 +499,7 @@ h4{font-size:16px}
       <article class="kv" data-id="k15">
         <div class="kv-foto"><img src="kavels/k15.jpg" alt="Champions Lounge — Ajax op topniveau" loading="lazy"></div>
         <span class="kv-num">9</span>
+        <button class="kv-open" data-open="k15" aria-label="Bekijk kavel 9: Champions Lounge — Ajax op topniveau"></button>
         <button class="kv-fav" aria-label="Zet kavel 9 op mijn lijst" data-fav="k15"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.49 4.04 3 5.5l7 7Z"/></svg></button>
         <div class="kv-body">
           <span class="kv-ronde">Kavel 9</span>
@@ -437,6 +515,7 @@ h4{font-size:16px}
       <article class="kv" data-id="k06">
         <div class="kv-foto"><img src="kavels/k06.jpg" alt="Taxirit in een Porsche 911 GT3 Cup" loading="lazy"></div>
         <span class="kv-num">10</span>
+        <button class="kv-open" data-open="k06" aria-label="Bekijk kavel 10: Taxirit in een Porsche 911 GT3 Cup"></button>
         <button class="kv-fav" aria-label="Zet kavel 10 op mijn lijst" data-fav="k06"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.49 4.04 3 5.5l7 7Z"/></svg></button>
         <div class="kv-body">
           <span class="kv-ronde">Kavel 10</span>
@@ -452,6 +531,7 @@ h4{font-size:16px}
       <article class="kv" data-id="k11">
         <div class="kv-foto"><img src="kavels/k11.jpg" alt="Aan tafel met de oud-hoofdredacteur van Michelin Benelux" loading="lazy"></div>
         <span class="kv-num">11</span>
+        <button class="kv-open" data-open="k11" aria-label="Bekijk kavel 11: Aan tafel met de oud-hoofdredacteur van Michelin Benelux"></button>
         <button class="kv-fav" aria-label="Zet kavel 11 op mijn lijst" data-fav="k11"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.49 4.04 3 5.5l7 7Z"/></svg></button>
         <div class="kv-body">
           <span class="kv-ronde">Kavel 11</span>
@@ -467,6 +547,7 @@ h4{font-size:16px}
       <article class="kv" data-id="k01">
         <div class="kv-foto"><img src="kavels/k01.jpg" alt="Net Alsof — VIP-arrangement Jochem Myjer" loading="lazy"></div>
         <span class="kv-num">12</span>
+        <button class="kv-open" data-open="k01" aria-label="Bekijk kavel 12: Net Alsof — VIP-arrangement Jochem Myjer"></button>
         <button class="kv-fav" aria-label="Zet kavel 12 op mijn lijst" data-fav="k01"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.49 4.04 3 5.5l7 7Z"/></svg></button>
         <div class="kv-body">
           <span class="kv-ronde">Kavel 12</span>
@@ -482,6 +563,7 @@ h4{font-size:16px}
       <article class="kv" data-id="k05">
         <div class="kv-foto kv-slider" data-slider><img src="kavels/k05s1.jpg" alt="Huize Welgelegen in ARTIS" class="is-on" loading="lazy"><img src="kavels/k05s2.jpg" alt="Een luipaard in ARTIS" loading="lazy"><img src="kavels/k05s3.jpg" alt="Zebra en giraffes in ARTIS" loading="lazy"><div class="kv-dots" role="tablist" aria-label="Beelden bij dit kavel"></div></div>
         <span class="kv-num">13</span>
+        <button class="kv-open" data-open="k05" aria-label="Bekijk kavel 13: Overnachten met uitzicht op de luipaarden"></button>
         <button class="kv-fav" aria-label="Zet kavel 13 op mijn lijst" data-fav="k05"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.49 4.04 3 5.5l7 7Z"/></svg></button>
         <div class="kv-body">
           <span class="kv-ronde">Kavel 13</span>
@@ -497,6 +579,7 @@ h4{font-size:16px}
       <article class="kv" data-id="k10">
         <div class="kv-foto kv-slider" data-slider><img src="kavels/k10.jpg" alt="Landhuishotel De Bloemenbeek" class="is-on" loading="lazy"><img src="kavels/k10s3.jpg" alt="Het landgoed met feesttent vanuit de lucht" loading="lazy"><img src="kavels/k10s2.jpg" alt="De helikopter waarmee u naar Zeeland vliegt" loading="lazy"><img src="kavels/k10s4.jpg" alt="Inter Scaldes vanuit de lucht" loading="lazy"><div class="kv-dots" role="tablist" aria-label="Beelden bij dit kavel"></div></div>
         <span class="kv-num">14</span>
+        <button class="kv-open" data-open="k10" aria-label="Bekijk kavel 14: Per helikopter van De Bloemenbeek naar Inter Scaldes"></button>
         <button class="kv-fav" aria-label="Zet kavel 14 op mijn lijst" data-fav="k10"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.49 4.04 3 5.5l7 7Z"/></svg></button>
         <div class="kv-body">
           <span class="kv-ronde">Kavel 14</span>
@@ -512,6 +595,7 @@ h4{font-size:16px}
       <article class="kv" data-id="k08">
         <div class="kv-foto"><img src="kavels/k08.jpg" alt="Tafel op de black-tie VIP Night van MASTERS EXPO" loading="lazy"></div>
         <span class="kv-num">15</span>
+        <button class="kv-open" data-open="k08" aria-label="Bekijk kavel 15: Tafel op de black-tie VIP Night van MASTERS EXPO"></button>
         <button class="kv-fav" aria-label="Zet kavel 15 op mijn lijst" data-fav="k08"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.49 4.04 3 5.5l7 7Z"/></svg></button>
         <div class="kv-body">
           <span class="kv-ronde">Kavel 15</span>
@@ -527,6 +611,7 @@ h4{font-size:16px}
       <article class="kv" data-id="k16">
         <div class="kv-foto"><img src="kavels/k16.jpg" alt="Collector’s edition — Ramses Shaffy" loading="lazy"></div>
         <span class="kv-num">16</span>
+        <button class="kv-open" data-open="k16" aria-label="Bekijk kavel 16: Collector’s edition — Ramses Shaffy"></button>
         <button class="kv-fav" aria-label="Zet kavel 16 op mijn lijst" data-fav="k16"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.49 4.04 3 5.5l7 7Z"/></svg></button>
         <div class="kv-body">
           <span class="kv-ronde">Kavel 16</span>
@@ -542,6 +627,7 @@ h4{font-size:16px}
       <article class="kv" data-id="k09">
         <div class="kv-foto"><img src="kavels/k09.jpg" alt="Champagnelunch bij Aan de Poel**" loading="lazy"></div>
         <span class="kv-num">17</span>
+        <button class="kv-open" data-open="k09" aria-label="Bekijk kavel 17: Champagnelunch bij Aan de Poel**"></button>
         <button class="kv-fav" aria-label="Zet kavel 17 op mijn lijst" data-fav="k09"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.49 4.04 3 5.5l7 7Z"/></svg></button>
         <div class="kv-body">
           <span class="kv-ronde">Kavel 17</span>
@@ -578,6 +664,21 @@ h4{font-size:16px}
   <div class="wrap"><p class="foot-note">Stichting Vergeet Mij Niet Gala &middot; Wittevrouwensingel 1, 3581 GA Utrecht &middot; Mede mogelijk gemaakt door de Alliance Gastronomique en Hotel Okura Amsterdam</p></div>
 </footer>
 
+<dialog class="kv-dialog" id="kavel-dialog" aria-label="Kavel">
+  <div class="dlg-in">
+    <figure class="dlg-beeld" id="dlg-beeld"></figure>
+    <div class="dlg-tekst" id="dlg-tekst"></div>
+  </div>
+  <div class="dlg-nav">
+    <button type="button" id="dlg-vorige" aria-label="Vorig kavel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <p class="dlg-tel" id="dlg-tel"></p>
+    <button type="button" id="dlg-volgende" aria-label="Volgend kavel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+  </div>
+  <button type="button" class="dlg-sluit" id="dlg-sluit" aria-label="Sluiten">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
+  </button>
+</dialog>
+
 <a class="shortlist" id="shortlist" href="#kavels" hidden>
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.49 4.04 3 5.5l7 7Z"/></svg>
   <span id="shortlist-n">0</span> op uw lijst
@@ -586,7 +687,7 @@ h4{font-size:16px}
 <script>
 // beeldsliders: kruisvervaging plus langzame zoom, alleen als de kaart in beeld is
 const stil = matchMedia('(prefers-reduced-motion:reduce)');
-document.querySelectorAll('[data-slider]').forEach(sl=>{
+function maakSlider(sl){
   const beelden=[...sl.querySelectorAll('img')];
   if(beelden.length<2) return;
   const dots=sl.querySelector('.kv-dots');
@@ -614,7 +715,8 @@ document.querySelectorAll('[data-slider]').forEach(sl=>{
   }
   function stop(){ if(timer){clearInterval(timer); timer=null;} }
   new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting?start():stop()),{threshold:.25}).observe(sl);
-});
+}
+document.querySelectorAll('[data-slider]').forEach(maakSlider);
 
 const tabs=[...document.querySelectorAll('.tab')];
 const cards=[...document.querySelectorAll('.kv')];
@@ -656,6 +758,72 @@ document.querySelectorAll('[data-fav]').forEach(b=>b.addEventListener('click',e=
 pill.addEventListener('click',()=>{const ft=document.querySelector('.tab-fav');setTab(ft);applyFilter('fav');});
 sync();
 applyFilter('all');
+
+// een kavel in het groot: schermvullend op mobiel, een venster op desktop
+const dlg=document.getElementById('kavel-dialog');
+const dlgBeeld=document.getElementById('dlg-beeld');
+const dlgTekst=document.getElementById('dlg-tekst');
+const dlgTel=document.getElementById('dlg-tel');
+const dlgVorige=document.getElementById('dlg-vorige');
+const dlgVolgende=document.getElementById('dlg-volgende');
+let open=-1;
+
+function zichtbareKaarten(){ return cards.filter(c=>!c.classList.contains('is-hide')); }
+
+function vulDialoog(card){
+  const lijst=zichtbareKaarten();
+  open=lijst.indexOf(card);
+
+  const foto=card.querySelector('.kv-foto').cloneNode(true);
+  const dots=foto.querySelector('.kv-dots');
+  if(dots) dots.innerHTML='';                       // de stipjes worden opnieuw gemaakt
+  foto.querySelectorAll('img').forEach((b,n)=>{
+    b.classList.toggle('is-on', n===0);
+    b.loading='eager';
+  });
+  dlgBeeld.replaceChildren(foto);
+  if(foto.hasAttribute('data-slider')) maakSlider(foto);
+
+  dlgTekst.innerHTML=card.querySelector('.kv-body').innerHTML;
+  const id=card.dataset.id;
+  const hart=document.createElement('button');
+  hart.type='button'; hart.className='dlg-hart'; hart.dataset.fav=id;
+  hart.innerHTML=card.querySelector('.kv-fav').innerHTML+'<span>Op mijn lijst</span>';
+  hart.addEventListener('click',()=>{ fav.has(id)?fav.delete(id):fav.add(id); sync(); });
+  dlgTekst.appendChild(hart);
+
+  dlgTel.textContent='Kavel '+card.querySelector('.kv-ronde').textContent.replace('Kavel ','')+' van '+lijst.length;
+  dlgVorige.disabled = open<=0;
+  dlgVolgende.disabled = open>=lijst.length-1;
+  dlg.querySelector('.dlg-in').scrollTop=0;
+  sync();
+}
+
+function openKavel(card){
+  vulDialoog(card);
+  if(!dlg.open) dlg.showModal();
+  document.body.classList.add('dlg-open');
+}
+function blader(stap){
+  const lijst=zichtbareKaarten();
+  const volgend=lijst[open+stap];
+  if(volgend) vulDialoog(volgend);
+}
+
+document.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',e=>{
+  e.preventDefault();
+  openKavel(b.closest('.kv'));
+}));
+document.getElementById('dlg-sluit').addEventListener('click',()=>dlg.close());
+dlgVorige.addEventListener('click',()=>blader(-1));
+dlgVolgende.addEventListener('click',()=>blader(1));
+dlg.addEventListener('close',()=>{ document.body.classList.remove('dlg-open'); dlgBeeld.replaceChildren(); });
+dlg.addEventListener('click',e=>{ if(e.target===dlg) dlg.close(); });   // klik naast het venster sluit
+addEventListener('keydown',e=>{
+  if(!dlg.open) return;
+  if(e.key==='ArrowRight') blader(1);
+  if(e.key==='ArrowLeft') blader(-1);
+});
 </script>
 </body>
 </html>

@@ -62,6 +62,7 @@ def kaart(k):
     return f'''      <article class="kv" data-id="{k['id']}">
         {foto(k)}
         <span class="kv-num">{e(k['num'])}</span>
+        <button class="kv-open" data-open="{k['id']}" aria-label="Bekijk kavel {e(k['num'])}: {e(k['titel'])}"></button>
         <button class="kv-fav" aria-label="Zet kavel {e(k['num'])} op mijn lijst" data-fav="{k['id']}">{HART}</button>
         <div class="kv-body">
           <span class="kv-ronde">Kavel {e(k['num'])}</span>
