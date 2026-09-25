@@ -192,9 +192,13 @@ h4{font-size:16px}
 
 /* het fotoraster: vierkanten, twee kolommen */
 .dlg-in{display:flex;flex-direction:column}
-.dlg-raster{order:-1;display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 0 4px}
-.dlg-raster img{width:100%;aspect-ratio:1/1;object-fit:cover;background:var(--beige-donker)}
-.dlg-raster img:first-child{grid-column:1/-1}      /* het eerste beeld altijd groot */
+/* mobiel: de beelden naast elkaar, veegbaar; desktop maakt er een raster van */
+.dlg-raster{order:-1;flex:none;display:flex;align-items:flex-start;gap:8px;padding:0 0 6px;overflow-x:auto;scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none}
+.dlg-raster::-webkit-scrollbar{display:none}
+.dlg-raster img{flex:0 0 88%;aspect-ratio:1/1;object-fit:cover;background:var(--beige-donker);
+  scroll-snap-align:center}
+.dlg-raster img:first-child{flex-basis:96%}
 .dlg-raster img{opacity:0;transform:scale(.94);transition:opacity .45s ease,transform .7s cubic-bezier(.2,.7,.3,1)}
 .dlg-raster img.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){
@@ -231,7 +235,9 @@ h4{font-size:16px}
 @media(min-width:860px){
   .kv-dialog{width:min(1180px,94vw);height:auto;max-height:88vh;margin:auto}
   .dlg-in{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);max-height:88vh;overflow:hidden}
-  .dlg-raster{order:0;padding:8px 8px 8px 0}
+  .dlg-raster{order:0;display:grid;grid-template-columns:1fr 1fr;overflow-x:hidden;padding:8px 8px 8px 0}
+  .dlg-raster img{flex:none;width:100%}
+  .dlg-raster img:first-child{grid-column:1/-1}
   .dlg-tekst{padding:clamp(40px,4vw,60px);overflow-y:auto}
   .dlg-tekst h3{font-size:clamp(30px,2.6vw,42px)}
   .dlg-tekst>p{font-size:22px}
