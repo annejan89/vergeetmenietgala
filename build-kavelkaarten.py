@@ -52,7 +52,7 @@ def kaart(k):
         lis = "".join(f"<li>{e(b)}</li>" for b in k["bullets"])
         incl = f'<div class="kv-incl"><p class="kv-incl-t">Inclusief</p><ul>{lis}</ul></div>'
     meta = f'<p class="kv-meta">{e(k["meta"])}</p>' if k.get("meta") else ""
-    minimum = (f'<p class="kv-min"><span>Minimale opbrengst</span>{bedrag(k["minimum"])}</p>'
+    minimum = (f'<p class="kv-min"><span>Minimale opbrengst</span><b>{bedrag(k["minimum"])}</b></p>'
                if k.get("minimum") else "")
     return f'''      <article class="kv" data-id="{k['id']}" data-fotos="{raster(k)}">
         {foto(k)}

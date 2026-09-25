@@ -175,7 +175,7 @@ h4{font-size:16px}
   background:var(--wit);color:var(--ink);overflow:hidden}
 .kv-dialog::backdrop{background:rgba(39,37,28,.6);backdrop-filter:blur(3px)}
 .dlg-in{height:100%;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
-.dlg-tekst{padding:64px 20px 32px}
+.dlg-tekst{padding:28px 20px 40px}
 .dlg-tekst .kv-ronde{display:block;font-size:14px;text-transform:uppercase;letter-spacing:.12em;color:var(--ink-60)}
 .dlg-tekst h3{font-family:Playfair,Georgia,serif;font-weight:500;font-size:clamp(28px,6.4vw,40px);
   line-height:1.08;margin:10px 0 16px}
@@ -185,13 +185,16 @@ h4{font-size:16px}
 .dlg-tekst .kv-incl li{font-size:17px;padding-left:24px;line-height:1.45}
 .dlg-tekst .kv-incl li::before{top:.6em;width:9px;height:9px}
 .dlg-tekst .kv-meta{margin-top:28px;font-size:14px!important;padding-top:16px}
-.dlg-tekst .kv-min{font-size:30px!important;margin-top:20px;padding:11px 18px}
+.dlg-tekst .kv-min{margin-top:24px}
 .dlg-tekst .kv-min span{font-size:13px}
+.dlg-tekst .kv-min b{font-size:38px;padding-bottom:13px;background-size:100% 14px}
 .dlg-tekst .kv-door{margin-top:24px;font-size:22px}
 
 /* het fotoraster: vierkanten, twee kolommen */
-.dlg-raster{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 20px 88px}
+.dlg-in{display:flex;flex-direction:column}
+.dlg-raster{order:-1;display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 0 4px}
 .dlg-raster img{width:100%;aspect-ratio:1/1;object-fit:cover;background:var(--beige-donker)}
+.dlg-raster img:first-child{grid-column:1/-1}      /* het eerste beeld altijd groot */
 .dlg-raster:empty{display:none}
 .dlg-hart{margin-top:28px;display:inline-flex;align-items:center;gap:10px;background:transparent;
   border:1px solid var(--lijn-2);padding:11px 20px;font-family:'Source Sans 3',sans-serif;font-size:16px;
@@ -223,6 +226,7 @@ h4{font-size:16px}
 @media(min-width:860px){
   .kv-dialog{width:min(1180px,94vw);height:auto;max-height:88vh;margin:auto}
   .dlg-in{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);max-height:88vh;overflow:hidden}
+  .dlg-raster{order:0;padding:8px 8px 8px 0}
   .dlg-tekst{padding:clamp(40px,4vw,60px);overflow-y:auto}
   .dlg-tekst h3{font-size:clamp(30px,2.6vw,42px)}
   .dlg-tekst>p{font-size:22px}
@@ -253,11 +257,12 @@ body.dlg-open{overflow:hidden}
 .kv-incl li{position:relative;padding-left:18px;font-size:16px;line-height:1.4}
 .kv-incl li::before{content:'';position:absolute;left:0;top:.6em;width:8px;height:8px;background:var(--geel)}
 .kv-meta{font-size:13px!important;text-transform:uppercase;letter-spacing:.1em;color:var(--ink);border-top:1px solid var(--lijn);padding-top:12px;margin-top:4px}
-.kv-min{align-self:flex-start;display:flex;align-items:baseline;gap:10px;margin-top:14px;padding:9px 14px;
-  background:var(--geel);font-family:'PP Frama','Source Sans 3',sans-serif;font-weight:200;
-  font-size:24px!important;line-height:1;color:var(--ink)}
+.kv-min{display:flex;flex-direction:column;align-items:flex-start;gap:6px;margin-top:16px}
 .kv-min span{font-family:'Source Sans 3',sans-serif;font-weight:400;font-size:12px;text-transform:uppercase;
-  letter-spacing:.08em;color:var(--ink)}
+  letter-spacing:.1em;color:var(--ink-60)}
+.kv-min b{font-family:'PP Frama','Source Sans 3',sans-serif;font-weight:200;font-size:30px;line-height:1;
+  color:var(--ink);padding:0 4px 10px;
+  background:url('assets/markeerstreep-geel.svg') left bottom/100% 11px no-repeat}
 .kv-door{margin-top:auto;padding-top:12px;font-family:Playfair,serif;font-size:19px}
 .kv-door span{display:block;font-family:'Source Sans 3',sans-serif;font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-60)}
 .kv.is-hide{display:none}
@@ -380,7 +385,7 @@ body.dlg-open{overflow:hidden}
           <p>Een compleet verzorgd Krug Champagne Diner bij Restaurant Flore** in Hotel De L&#x27;Europe in Amsterdam.</p>
           <div class="kv-incl"><p class="kv-incl-t">Inclusief</p><ul><li>Diner bij Flore**, Hotel De L&#x27;Europe Amsterdam</li><li>Begeleidend champagnearrangement van Krug</li><li>Voor twee personen</li></ul></div>
           <p class="kv-meta">2 PERSONEN</p>
-          <p class="kv-min"><span>Minimale opbrengst</span>&euro;&nbsp;1.000</p>
+          <p class="kv-min"><span>Minimale opbrengst</span><b>&euro;&nbsp;1.000</b></p>
           <p class="kv-door"><span>Aangeboden door</span>LVMH en Restaurant Flore**</p>
         </div>
       </article>
@@ -396,7 +401,7 @@ body.dlg-open{overflow:hidden}
           <p>Aan tafel bij Margo Reuten en Petro Kools in Maasbracht.</p>
           <div class="kv-incl"><p class="kv-incl-t">Inclusief</p><ul><li>Volledig verzorgd diner bij Da Vinci* voor 10 personen</li><li>De mooiste wijnen uit de kelder</li><li>Miniconcert van de Limburgse tenor Ivo van der Bijl</li></ul></div>
           
-          <p class="kv-min"><span>Minimale opbrengst</span>&euro;&nbsp;3.500</p>
+          <p class="kv-min"><span>Minimale opbrengst</span><b>&euro;&nbsp;3.500</b></p>
           <p class="kv-door"><span>Aangeboden door</span>Restaurant Da Vinci* en Ivo van der Bijl</p>
         </div>
       </article>
@@ -412,7 +417,7 @@ body.dlg-open{overflow:hidden}
           <p>Een gelimiteerde, genummerde Collectors Box van topfotograaf Govert de Roos.</p>
           <div class="kv-incl"><p class="kv-incl-t">Inclusief</p><ul><li>Nooit eerder gepubliceerd archiefwerk</li><li>Voucher voor drie zelfgekozen prints</li><li>Gesigneerd en met certificaat van authenticiteit</li></ul></div>
           <p class="kv-meta">COLLECTORS BOX</p>
-          <p class="kv-min"><span>Minimale opbrengst</span>&euro;&nbsp;1.000</p>
+          <p class="kv-min"><span>Minimale opbrengst</span><b>&euro;&nbsp;1.000</b></p>
           <p class="kv-door"><span>Aangeboden door</span>Govert de Roos</p>
         </div>
       </article>
@@ -428,7 +433,7 @@ body.dlg-open{overflow:hidden}
           <p>Een dag langs de Vecht, met Friese paarden voor de koets.</p>
           <div class="kv-incl"><p class="kv-incl-t">Inclusief</p><ul><li>Koetsentocht van Stalhouderij De Zadelhoff</li><li>Langs de historische buitenplaatsen van de Vecht</li><li>Volledig verzorgde lunch bij De Nederlanden* in Vreeland</li></ul></div>
           <p class="kv-meta">4 PERSONEN</p>
-          <p class="kv-min"><span>Minimale opbrengst</span>&euro;&nbsp;5.000</p>
+          <p class="kv-min"><span>Minimale opbrengst</span><b>&euro;&nbsp;5.000</b></p>
           <p class="kv-door"><span>Aangeboden door</span>Stalhouderij De Zadelhoff en De Nederlanden*</p>
         </div>
       </article>
@@ -444,7 +449,7 @@ body.dlg-open{overflow:hidden}
           <p>Een collectors item: de special edition van het Rijksmuseum, één van slechts honderd.</p>
           <div class="kv-incl"><p class="kv-incl-t">Inclusief</p><ul><li>Miniatuur KLM-huisje, special edition Rijksmuseum</li><li>Private rondleiding door het Rijksmuseum</li><li>Volledig verzorgde lunch bij Restaurant Rijks*</li></ul></div>
           <p class="kv-meta">2 PERSONEN</p>
-          <p class="kv-min"><span>Minimale opbrengst</span>&euro;&nbsp;3.500</p>
+          <p class="kv-min"><span>Minimale opbrengst</span><b>&euro;&nbsp;3.500</b></p>
           <p class="kv-door"><span>Aangeboden door</span>KLM, Rijksmuseum en Restaurant Rijks*</p>
         </div>
       </article>
@@ -460,7 +465,7 @@ body.dlg-open{overflow:hidden}
           <p>Het huisje van het huis waar we vanavond te gast zijn — ook één van honderd.</p>
           <div class="kv-incl"><p class="kv-incl-t">Inclusief</p><ul><li>Miniatuur KLM-huisje, special edition Hotel Okura Amsterdam</li><li>Overnachting in een Royal of President Suite</li><li>Diner in Ciel Bleu**</li></ul></div>
           <p class="kv-meta">2 PERSONEN</p>
-          <p class="kv-min"><span>Minimale opbrengst</span>&euro;&nbsp;3.500</p>
+          <p class="kv-min"><span>Minimale opbrengst</span><b>&euro;&nbsp;3.500</b></p>
           <p class="kv-door"><span>Aangeboden door</span>Hotel Okura Amsterdam</p>
         </div>
       </article>
@@ -476,7 +481,7 @@ body.dlg-open{overflow:hidden}
           <p>Sander en Anne Spruit van sterrenrestaurant De Burgemeester koken bij u thuis.</p>
           <div class="kv-incl"><p class="kv-incl-t">Inclusief</p><ul><li>Volledig verzorgd 4-gangendiner voor 10 personen</li><li>Bijpassende wijnen</li><li>Champagneproeverij van Moët &amp; Chandon</li><li>Kaviaarproeverij van The House of Caviar</li></ul></div>
           
-          <p class="kv-min"><span>Minimale opbrengst</span>&euro;&nbsp;5.000</p>
+          <p class="kv-min"><span>Minimale opbrengst</span><b>&euro;&nbsp;5.000</b></p>
           <p class="kv-door"><span>Aangeboden door</span>De Burgemeester*, Moët &amp; Chandon en The House of Caviar</p>
         </div>
       </article>
@@ -492,7 +497,7 @@ body.dlg-open{overflow:hidden}
           <p>Het Champions League-duel in het Philips Stadion vanuit de Legends Lounge.</p>
           <div class="kv-incl"><p class="kv-incl-t">Inclusief</p><ul><li>Twee plaatsen in de Legends Lounge</li><li>PSV-legendes aan tafel</li><li>Four-handsdiner van Adrian Zarzo (Zarzo*) en Begoña Rodrigo (La Salita*)</li></ul></div>
           <p class="kv-meta">2 PERSONEN · 9 DECEMBER 2026</p>
-          <p class="kv-min"><span>Minimale opbrengst</span>&euro;&nbsp;4.000</p>
+          <p class="kv-min"><span>Minimale opbrengst</span><b>&euro;&nbsp;4.000</b></p>
           <p class="kv-door"><span>Aangeboden door</span>Legends Lounge en Restaurant Zarzo*</p>
         </div>
       </article>
@@ -508,7 +513,7 @@ body.dlg-open{overflow:hidden}
           <p>Dit kavel wordt twee keer geveild, dit is de tweede.</p>
           <div class="kv-incl"><p class="kv-incl-t">Inclusief</p><ul><li>Twee plaatsen in de Legends Lounge</li><li>PSV-legendes aan tafel</li><li>Four-handsdiner van Adrian Zarzo (Zarzo*) en Begoña Rodrigo (La Salita*)</li></ul></div>
           <p class="kv-meta">2 PERSONEN · 9 DECEMBER 2026</p>
-          <p class="kv-min"><span>Minimale opbrengst</span>&euro;&nbsp;4.000</p>
+          <p class="kv-min"><span>Minimale opbrengst</span><b>&euro;&nbsp;4.000</b></p>
           <p class="kv-door"><span>Aangeboden door</span>Legends Lounge en Restaurant Zarzo*</p>
         </div>
       </article>
@@ -524,7 +529,7 @@ body.dlg-open{overflow:hidden}
           <p>Ajax vanuit de meest prestigieuze skylounge van de Johan Cruijff ArenA.</p>
           <div class="kv-incl"><p class="kv-incl-t">Inclusief</p><ul><li>Champions Lounge, volledig verzorgd arrangement</li><li>4-gangen sterrendiner</li><li>Analyse van Sjaak Swart en Ronald de Boer</li><li>VIP-parkeren</li><li>’t Huys Suite in Hotel De L’Europe</li></ul></div>
           <p class="kv-meta">2 PERSONEN</p>
-          <p class="kv-min"><span>Minimale opbrengst</span>&euro;&nbsp;4.500</p>
+          <p class="kv-min"><span>Minimale opbrengst</span><b>&euro;&nbsp;4.500</b></p>
           <p class="kv-door"><span>Aangeboden door</span>Champions Lounge en Hotel De L’Europe</p>
         </div>
       </article>
@@ -540,7 +545,7 @@ body.dlg-open{overflow:hidden}
           <p>De snelste taxirit van uw leven: ruim 500 pk over het circuit van Zandvoort.</p>
           <div class="kv-incl"><p class="kv-incl-t">Inclusief</p><ul><li>Rit in een Porsche 911 GT3 Cup, naast een ervaren coureur</li><li>Circuit Zandvoort, voor 4 personen</li><li>Volledig verzorgde lunch bij De Bokkedoorns** in de duinen</li></ul></div>
           
-          <p class="kv-min"><span>Minimale opbrengst</span>&euro;&nbsp;3.500</p>
+          <p class="kv-min"><span>Minimale opbrengst</span><b>&euro;&nbsp;3.500</b></p>
           <p class="kv-door"><span>Aangeboden door</span>B&amp;R Motorsport en De Bokkedoorns**</p>
         </div>
       </article>
@@ -556,7 +561,7 @@ body.dlg-open{overflow:hidden}
           <p>Aan tafel met Werner Loens, oud-hoofdredacteur van Michelin Benelux.</p>
           <div class="kv-incl"><p class="kv-incl-t">Inclusief</p><ul><li>Volledig verzorgd 6-gangendiner met champagne bij Merlet*</li><li>Zijn verhalen uit de wereld van Michelin</li><li>Suite en ontbijt in Hotel Merlet</li></ul></div>
           <p class="kv-meta">2 PERSONEN</p>
-          <p class="kv-min"><span>Minimale opbrengst</span>&euro;&nbsp;3.500</p>
+          <p class="kv-min"><span>Minimale opbrengst</span><b>&euro;&nbsp;3.500</b></p>
           <p class="kv-door"><span>Aangeboden door</span>Hotel Restaurant Merlet*</p>
         </div>
       </article>
@@ -572,7 +577,7 @@ body.dlg-open{overflow:hidden}
           <p>Een avond rond de show Net Alsof in Koninklijk Theater Carré.</p>
           <div class="kv-incl"><p class="kv-incl-t">Inclusief</p><ul><li>Vier kaarten in een VIP-loge</li><li>Meet &amp; greet met Jochem Myjer na afloop</li><li>Twee suites in Hotel De L’Europe</li><li>Diner in Trattoria Graziella</li><li>Shuttle van hotel naar theater en terug</li></ul></div>
           <p class="kv-meta">4 PERSONEN · 21 NOVEMBER 2026</p>
-          <p class="kv-min"><span>Minimale opbrengst</span>&euro;&nbsp;5.500</p>
+          <p class="kv-min"><span>Minimale opbrengst</span><b>&euro;&nbsp;5.500</b></p>
           <p class="kv-door"><span>Aangeboden door</span>Jochem Myjer, Hotel De L’Europe en Trattoria Graziella</p>
         </div>
       </article>
@@ -588,7 +593,7 @@ body.dlg-open{overflow:hidden}
           <p>Een nacht in Huize Welgelegen in ARTIS — vanuit de masterbedroom zicht op de luipaarden.</p>
           <div class="kv-incl"><p class="kv-incl-t">Inclusief</p><ul><li>Overnachting voor 6 personen</li><li>Privérondleiding door ARTIS</li><li>Twee dagen toegang tot ARTIS, het Groote Museum en Micropia</li><li>Culinaire avond van Het Amsterdammertje*</li></ul></div>
           
-          <p class="kv-min"><span>Minimale opbrengst</span>&euro;&nbsp;5.000</p>
+          <p class="kv-min"><span>Minimale opbrengst</span><b>&euro;&nbsp;5.000</b></p>
           <p class="kv-door"><span>Aangeboden door</span>ARTIS en Restaurant Het Amsterdammertje*</p>
         </div>
       </article>
@@ -604,7 +609,7 @@ body.dlg-open{overflow:hidden}
           <p>Van Twente naar Zeeland — per helikopter, tussen twee sterrenrestaurants.</p>
           <div class="kv-incl"><p class="kv-incl-t">Inclusief</p><ul><li>Twee suites in Landhuishotel De Bloemenbeek*</li><li>Volledig verzorgd sterrendiner en ontbijt</li><li>Helikoptervlucht naar Zeeland</li><li>Landing in de tuin van Inter Scaldes** voor de lunch</li></ul></div>
           <p class="kv-meta">4 PERSONEN</p>
-          <p class="kv-min"><span>Minimale opbrengst</span>&euro;&nbsp;8.000</p>
+          <p class="kv-min"><span>Minimale opbrengst</span><b>&euro;&nbsp;8.000</b></p>
           <p class="kv-door"><span>Aangeboden door</span>De Bloemenbeek* en Inter Scaldes**</p>
         </div>
       </article>
@@ -620,7 +625,7 @@ body.dlg-open{overflow:hidden}
           <p>Yveske’s Kitchen tijdens de legendarische VIP Night van het 25-jarige MASTERS EXPO.</p>
           <div class="kv-incl"><p class="kv-incl-t">Inclusief</p><ul><li>Eigen tafel voor 10 personen, black tie</li><li>Champagne en kaviaar</li><li>Viergangendiner van chefs met samen 41 Michelinsterren</li><li>Live muziek en ontmoetingen met de topchefs</li></ul></div>
           <p class="kv-meta">10 PERSONEN · 12 DECEMBER</p>
-          <p class="kv-min"><span>Minimale opbrengst</span>&euro;&nbsp;2.500</p>
+          <p class="kv-min"><span>Minimale opbrengst</span><b>&euro;&nbsp;2.500</b></p>
           <p class="kv-door"><span>Aangeboden door</span>MASTERS EXPO</p>
         </div>
       </article>
@@ -636,7 +641,7 @@ body.dlg-open{overflow:hidden}
           <p>Een groot koffietafelboek vol archiefstukken, handgeschreven teksten en foto’s van Ramses Shaffy, samengebracht als een omgekeerde schoenendoos aan herinneringen. Oplage 500 stuks.</p>
           
           <p class="kv-meta">GENUMMERDE EDITIE</p>
-          <p class="kv-min"><span>Minimale opbrengst</span>&euro;&nbsp;3.000</p>
+          <p class="kv-min"><span>Minimale opbrengst</span><b>&euro;&nbsp;3.000</b></p>
           <p class="kv-door"><span>Aangeboden door</span>Uitgeverij Komma</p>
         </div>
       </article>
@@ -652,7 +657,7 @@ body.dlg-open{overflow:hidden}
           <p>Aan tafel bij Stefan van Sprang en Robert Veuger in Amstelveen.</p>
           <div class="kv-incl"><p class="kv-incl-t">Inclusief</p><ul><li>Proeverij van Moët &amp; Chandon</li><li>Volledig verzorgde 5-gangenlunch voor 10 personen</li><li>Champagne en mooie wijnen</li></ul></div>
           
-          <p class="kv-min"><span>Minimale opbrengst</span>&euro;&nbsp;3.000</p>
+          <p class="kv-min"><span>Minimale opbrengst</span><b>&euro;&nbsp;3.000</b></p>
           <p class="kv-door"><span>Aangeboden door</span>Aan de Poel** en Moët &amp; Chandon</p>
         </div>
       </article>
