@@ -4,7 +4,7 @@
   "num": "1",
   "slide": null,
   "titel": "KRUG Experience bij restaurant Flore**",
-  "intro": "Een compleet verzorgd Krug Champagne Diner bij Restaurant Flore** in Hotel De L'Europe in Amsterdam.",
+  "intro": "Een compleet verzorgd Krug champagne diner bij Restaurant Flore** in Hotel De L'Europe in Amsterdam.",
   "meta": "2 PERSONEN",
   "bullets": [
    "Diner bij Flore**, Hotel De L'Europe Amsterdam",
@@ -23,7 +23,8 @@
   "bullets": [
    "Volledig verzorgd diner bij Da Vinci* voor 10 personen",
    "De mooiste wijnen uit de kelder",
-   "Miniconcert van de Limburgse tenor Ivo van der Bijl"
+   "Miniconcert van de Limburgse tenor Ivo van der Bijl",
+   "Door de chef gesigneerde kookboeken van Margo"
   ],
   "aanbieder": "Restaurant Da Vinci* en Ivo van der Bijl",
   "slide": 34,
@@ -76,16 +77,16 @@
  {
   "id": "k04",
   "num": "6",
-  "titel": "De Burgemeester* × Moët & Chandon en The House of Caviar",
+  "titel": "De Burgemeester* × Moët & Chandon en House of Caviar",
   "intro": "Sander en Anne Spruit van sterrenrestaurant De Burgemeester* koken bij u thuis.",
   "meta": "",
   "bullets": [
    "Volledig verzorgd 4-gangendiner voor 10 personen",
    "Bijpassende wijnen",
    "Champagneproeverij van Moët & Chandon",
-   "Kaviaarproeverij van The House of Caviar"
+   "Kaviaarproeverij van House of Caviar"
   ],
-  "aanbieder": "De Burgemeester*, Moët & Chandon en The House of Caviar",
+  "aanbieder": "De Burgemeester*, Moët & Chandon en House of Caviar",
   "slide": 31,
   "minimum": 5000
  },
@@ -219,7 +220,7 @@
   "id": "k08",
   "num": "15",
   "titel": "Tafel op de black-tie VIP Night van MASTERS EXPO",
-  "intro": "Yveske’s Kitchen tijdens de legendarische VIP Night van het 25-jarige MASTERS EXPO.",
+  "intro": "YVESKE’S KITCHEN tijdens de legendarische VIP Night van het 25-jarige MASTERS EXPO.",
   "meta": "10 PERSONEN · 12 DECEMBER",
   "bullets": [
    "Eigen tafel voor 10 personen, black tie",
@@ -249,8 +250,9 @@
   "intro": "Aan tafel bij Stefan van Sprang en Robert Veuger in Amstelveen.",
   "meta": "",
   "bullets": [
+   "Champagneproeverij",
    "Volledig verzorgde 5-gangenlunch voor 10 personen",
-   "Champagne en mooie wijnen"
+   "Inclusief champagne en mooie wijnen"
   ],
   "aanbieder": "Aan de Poel**",
   "slide": 36,

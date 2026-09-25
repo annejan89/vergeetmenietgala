@@ -54,7 +54,8 @@ BRON = {
     "k13": ["Kavel -  Legends Lounge/W photography - www.willemijnbeekman.com-117.jpg",
             "Kavel -  Legends Lounge/W photography - www.willemijnbeekman.com-115.jpg",
             "Kavel -  Legends Lounge/W photography - www.willemijnbeekman.com-003.jpg"],
-    "k15": ["Kavel - Champions Lounge/ChampionsLounge_07_08_2023_2.jpg"],
+    "k15": ["Kavel - Champions Lounge/ChampionsLounge_07_08_2023_2.jpg",
+            "_orig/le-hotel.jpg"],
     "k06": ["Kavel - Racen Circuit Zandvoort/2026-09-02AB26191GPElite-ExclusiveTrackdayAssen-22.jpeg",
             "Kavel - Racen Circuit Zandvoort/LDDK-20250430-0097.jpg",
             "Kavel - Racen Circuit Zandvoort/2026-09-02AB26191GPElite-ExclusiveTrackdayAssen-78.jpeg",
@@ -65,12 +66,13 @@ BRON = {
             "Kavel - Merlet x Werner Loens/image003.jpg",
             "Kavel - Merlet x Werner Loens/image002.jpg"],
     "k01": ["Kavel - Jochem Myjer/Jochem_netalsof_LiggendSite_3417x1500_titel.jpg",
-            "Kavel - Jochem Myjer/Jochem_netalsof_FB_Inst_post_1080x1080_3.jpg"],
-    "k05": ["Kavel - Artis/Huize Welgelegen 1.PNG",
+            "Kavel - Jochem Myjer/Jochem_netalsof_FB_Inst_post_1080x1080_3.jpg",
+            "_orig/le-hotel.jpg", "_orig/le-kamer.jpg"],
+    "k05": ["_orig/k05s3.jpg",
+            "Kavel - Artis/Huize Welgelegen 1.PNG",
             "Kavel - Artis/Huize Welgelegen 5.jpg",
             "Kavel - Artis/_t Amsterdammetje(1).jpg"],
     "k10": ["Kavel - Bloemebeek x Inter Scaldes /AX0I5809.JPG",
-            "Kavel - Bloemebeek x Inter Scaldes /INTER SCALDES 8-9-07-2027-01677.jpg",
             "Kavel - Bloemebeek x Inter Scaldes /INTER SCALDES 8-9-07-2027-01773.jpg",
             "Kavel - Bloemebeek x Inter Scaldes /INTER SCALDES 8-9-07-2027-02049.jpg"],
     "k08": ["Kavel - Diner VIP avond Masters/BEELD TE GEBRUIKEN MASTERS EXPO YVESKE_S KITCHEN/MASTERS EXPO 1.jpg",
@@ -88,7 +90,7 @@ BRON = {
 
 # beelden die al eerder klaargezet zijn en in het raster mee mogen
 EXTRA = {
-    "k05": ["_orig/k05s2.jpg", "_orig/k05s3.jpg"],
+    "k05": ["_orig/k05s2.jpg"],
     "k10": ["_orig/k10s3.jpg"],
     "k16": ["_orig/k16.jpg"],
 }
