@@ -191,6 +191,36 @@ h4{font-size:16px}
 .kv-dialog{width:100%;max-width:none;height:100%;max-height:none;margin:0;padding:0;border:0;
   background:var(--wit);color:var(--ink);overflow:hidden}
 .kv-dialog:focus,.kv-dialog:focus-visible{outline:none}
+
+/* venster met de veilingvoorwaarden */
+.vw-dialog{width:100%;max-width:none;height:100%;max-height:none;margin:0;padding:0;border:0;
+  background:var(--wit);color:var(--ink);overflow:hidden}
+.vw-dialog:focus,.vw-dialog:focus-visible{outline:none}
+.vw-dialog::backdrop{background:rgba(39,37,28,.6);backdrop-filter:blur(3px)}
+.vw-in{height:100%;overflow-y:auto;overscroll-behavior:contain;padding:64px 20px 56px;max-width:74ch;margin:0 auto}
+.vw-in h2{font-family:Playfair,Georgia,serif;font-weight:500;font-size:clamp(30px,6vw,44px);line-height:1.1;margin-bottom:28px}
+.vw-in h3{font-family:Playfair,Georgia,serif;font-weight:500;font-size:clamp(21px,2.4vw,26px);margin:36px 0 12px}
+.vw-in p{font-size:17px;line-height:1.55;margin-bottom:12px}
+.vw-in ul{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:8px}
+.vw-in li{position:relative;padding-left:24px;font-size:17px;line-height:1.5}
+.vw-in li::before{content:'';position:absolute;left:0;top:.6em;width:9px;height:9px;background:var(--geel)}
+@media(min-width:860px){
+  .vw-dialog{width:min(860px,92vw);height:auto;max-height:88vh;margin:auto}
+  .vw-in{max-height:88vh;padding:clamp(48px,5vw,72px)}
+  .vw-in p,.vw-in li{font-size:18px}
+}
+.vw-lead{max-width:60ch;margin-top:16px;font-size:19px}
+.vw-link{background:none;border:0;padding:0;font:inherit;color:var(--ink);cursor:pointer;
+  text-decoration:underline;text-decoration-color:var(--geel);text-decoration-thickness:3px;text-underline-offset:4px}
+.vw-link:hover{text-decoration-color:var(--ink)}
+.vw-punten{list-style:none;display:grid;gap:24px 40px;margin-top:clamp(32px,5vh,52px)}
+.vw-punten li{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:baseline}
+.vw-punten b{font-family:'PP Frama','Source Sans 3',sans-serif;font-weight:200;font-size:30px;line-height:1;color:var(--ink-60)}
+.vw-punten h3{font-size:19px;margin-bottom:4px}
+.vw-punten p{font-size:17px;line-height:1.5;max-width:52ch}
+.vw-slot{margin-top:clamp(32px,5vh,52px);padding-top:20px;border-top:1px solid var(--lijn);font-size:17px}
+.vw-slot b{font-family:Playfair,serif;font-weight:500;font-size:21px}
+@media(min-width:791px){.vw-punten{grid-template-columns:1fr 1fr}}
 .kv-dialog::backdrop{background:rgba(39,37,28,.6);backdrop-filter:blur(3px)}
 .dlg-in{height:100%;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
 .dlg-tekst{padding:28px 20px 40px}
@@ -685,6 +715,26 @@ body.dlg-open{overflow:hidden}
   </div>
 </section>
 
+<section class="sec voorwaarden" id="voorwaarden">
+  <div class="wrap">
+    <h2>Veilingvoorwaarden<span class="streep"></span></h2>
+    <p class="vw-lead"><button type="button" class="vw-link" id="vw-open">Klik hier voor de uitgebreide voorwaarden.</button><br>
+      Bied mee en steun samen met ons het goede doel.</p>
+    <ol class="vw-punten">
+      <li><b>1</b><div><h3>Bieden is bindend</h3><p>Een uitgebracht bod is bindend en kan in beginsel niet worden ingetrokken.</p></div></li>
+      <li><b>2</b><div><h3>Ondertekening overeenkomst</h3><p>Direct na aanvaarding van het hoogste bod ondertekent de koper een overeenkomst. Met deze ondertekening verplicht de koper zich tot betaling van het volledige winnende bod.</p></div></li>
+      <li><b>3</b><div><h3>Betaling binnen 7 dagen</h3><p>Het volledige aankoopbedrag wordt per bankoverschrijving betaald en dient binnen 7 dagen na aankoop door de Organisator te zijn ontvangen.</p></div></li>
+      <li><b>4</b><div><h3>Overdracht na betaling</h3><p>Het veilingitem wordt pas aan de koper overgedragen nadat de volledige betaling is ontvangen.</p></div></li>
+      <li><b>5</b><div><h3>Niet inwisselbaar voor geld</h3><p>Veilingitems kunnen niet voor geld worden ingewisseld.</p></div></li>
+      <li><b>6</b><div><h3>Voorwaarden per item</h3><p>Eventuele geldigheidsdata, reserveringsvoorwaarden, beperkingen en andere bijzondere voorwaarden bij het veilingitem zijn van toepassing.</p></div></li>
+      <li><b>7</b><div><h3>Items van derden</h3><p>Sommige veilingitems worden geleverd of uitgevoerd door een externe aanbieder. De specifieke voorwaarden van die aanbieder kunnen van toepassing zijn.</p></div></li>
+      <li><b>8</b><div><h3>ANBI en fiscale behandeling</h3><p>De Organisator is een ANBI. De aankoop van een veilingitem is niet automatisch een fiscaal aftrekbare gift, omdat tegenover de betaling een veilingitem of andere tegenprestatie staat.</p></div></li>
+      <li><b>9</b><div><h3>Beslissing veilingmeester</h3><p>Bij onduidelijkheid over een bod of het verloop van de veiling beslist de veilingmeester over de biedprocedure.</p></div></li>
+    </ol>
+    <p class="vw-slot">Door mee te bieden accepteert u de volledige veilingvoorwaarden van<br><b>Stichting Vergeet Mij Niet Gala</b></p>
+  </div>
+</section>
+
 <footer class="foot">
   <div class="wrap foot-grid">
     <div>
@@ -703,6 +753,44 @@ body.dlg-open{overflow:hidden}
   </div>
   <div class="wrap"><p class="foot-note">Stichting Vergeet Mij Niet Gala &middot; Wittevrouwensingel 1, 3581 GA Utrecht &middot; Mede mogelijk gemaakt door de Alliance Gastronomique en Hotel Okura Amsterdam</p></div>
 </footer>
+
+<dialog class="vw-dialog" id="vw-dialog" aria-labelledby="vw-titel">
+  <div class="vw-in">
+    <h2 id="vw-titel">Veilingvoorwaarden</h2>
+      <!-- voorwaarden -->
+      <p>Doel van de veiling. De Organisator is een Algemeen Nut Beogende Instelling (ANBI). De opbrengst van de veiling komt, na aftrek van eventuele direct aan de veiling verbonden kosten, ten goede aan Alzheimer Nederland.</p>
+      <h3>1. Algemeen</h3>
+      <ul><li>De veiling wordt georganiseerd door Stichting Vergeet Mij Niet Gala, hierna te noemen: de Organisator.</li><li>De Organisator is aangemerkt als Algemeen Nut Beogende Instelling (ANBI).</li><li>Deelname aan de veiling houdt in dat de deelnemer deze veilingvoorwaarden accepteert.</li><li>De veiling staat onder leiding van een door de Organisator aangewezen veilingmeester.</li><li>De veilingmeester bepaalt de wijze waarop de veiling wordt uitgevoerd en is bevoegd om, indien de omstandigheden daartoe aanleiding geven, de biedprocedure aan te passen.</li></ul>
+      <h3>2. Veilingitems</h3>
+      <ul><li>De te veilen goederen, diensten, arrangementen en overige aanbiedingen worden hierna gezamenlijk aangeduid als veilingitems.</li><li>De Organisator streeft ernaar de veilingitems zo volledig en correct mogelijk te omschrijven.</li><li>Voor zover een veilingitem door een derde ter beschikking is gesteld, is de informatie over het item mede gebaseerd op informatie van deze aanbieder.</li><li>Eventuele specifieke voorwaarden, beperkingen, geldigheidsdata, reserveringsvoorwaarden of uitsluitingen die bij een veilingitem worden vermeld, maken onderdeel uit van de overeenkomst met de koper.</li><li>Vermelde waarden van veilingitems zijn, tenzij uitdrukkelijk anders aangegeven, indicatief.</li><li>Veilingitems zijn niet inwisselbaar voor geld.</li></ul>
+      <h3>3. Bieden</h3>
+      <ul><li>Een bod is onvoorwaardelijk en bindend. Door het uitbrengen van een bod verklaart de bieder bereid en bevoegd te zijn het veilingitem voor het geboden bedrag af te nemen.</li><li>Een eenmaal uitgebracht bod kan niet worden ingetrokken, tenzij de veilingmeester daar in uitzonderlijke omstandigheden toestemming voor geeft.</li><li>De veilingmeester bepaalt de biedstappen en kan deze gedurende de veiling aanpassen.</li><li>Bij onduidelijkheid over een bod bepaalt de veilingmeester of het bod wordt geaccepteerd.</li><li>Bij discussie over welk bod als laatste of hoogste bod is uitgebracht, kan de veilingmeester besluiten het bieden vanaf het laatst onbetwiste bod te hervatten.</li></ul>
+      <h3>4. Toewijzing en koopovereenkomst</h3>
+      <ul><li>Een veilingitem wordt toegewezen aan de hoogste bieder nadat de veilingmeester het hoogste bod heeft aanvaard en de veiling voor het betreffende item heeft gesloten.</li><li>Direct na aanvaarding van het bod ondertekent de koper een schriftelijke overeenkomst waarin het veilingitem, het geaccepteerde bod en de gegevens van de koper worden vastgelegd.</li><li>Door ondertekening van deze overeenkomst verplicht de koper zich onvoorwaardelijk tot betaling van het volledige geaccepteerde bod overeenkomstig deze veilingvoorwaarden.</li><li>De veilingmeester is bevoegd een veilingitem niet toe te wijzen indien daarvoor naar zijn oordeel een gegronde reden bestaat.</li><li>Indien vooraf een minimumbedrag of reserveprijs is vastgesteld, kan het item alleen worden toegewezen wanneer ten minste dit bedrag wordt geboden.</li></ul>
+      <h3>5. Betaling</h3>
+      <ul><li>De koper dient het volledige aankoopbedrag per bankoverschrijving te voldoen op de door de Organisator aangegeven bankrekening.</li><li>Het volledige aankoopbedrag dient uiterlijk binnen 7 dagen na de aankoopdatum door de Organisator te zijn ontvangen.</li><li>Bij de bankoverschrijving dient de koper de door de Organisator aangegeven betalingsomschrijving of het nummer van het veilingitem te vermelden.</li><li>Eventuele kosten die specifiek samenhangen met het gebruik of de uitvoering van een veilingitem en die niet uitdrukkelijk bij het item zijn inbegrepen, zijn voor rekening van de koper.</li><li>Indien de koper niet binnen de gestelde termijn betaalt, is de Organisator gerechtigd de koper schriftelijk tot betaling aan te manen en, voor zover wettelijk toegestaan, verdere maatregelen te nemen om betaling van de uit de ondertekende overeenkomst voortvloeiende verplichting te verkrijgen.</li></ul>
+      <h3>6. Overdracht en levering</h3>
+      <ul><li>Het veilingitem blijft bij de Organisator of de aanbieder totdat het volledige aankoopbedrag is ontvangen.</li><li>Na ontvangst van de volledige betaling wordt het veilingitem aan de koper overgedragen.</li><li>Bij fysieke veilingitems maakt de Organisator met de koper afspraken over afhalen of levering.</li><li>Bij diensten, arrangementen, reizen, diners, activiteiten en vergelijkbare veilingitems ontvangt de koper na betaling de informatie, voucher of andere bescheiden die nodig zijn om het veilingitem te verzilveren.</li><li>De koper is zelf verantwoordelijk voor het tijdig verzilveren van een veilingitem binnen de eventueel daarvoor geldende termijn en voor het tijdig maken van noodzakelijke reserveringen.</li><li>Veilingitems zijn niet inwisselbaar voor geld.</li></ul>
+      <h3>7. Door derden aangeboden veilingitems</h3>
+      <ul><li>Indien een veilingitem door een derde ter beschikking is gesteld, kan de feitelijke uitvoering of levering door deze derde plaatsvinden.</li><li>Eventuele specifieke voorwaarden van de aanbieder worden vooraf of bij het veilingitem bekendgemaakt en zijn van toepassing op het gebruik daarvan.</li><li>De Organisator zal zich inspannen om eventuele problemen met een aanbieder op redelijke wijze te helpen oplossen, maar is niet verantwoordelijk voor tekortkomingen van een derde voor zover deze niet aan de Organisator kunnen worden toegerekend.</li></ul>
+      <h3>8. Annulering of onmogelijkheid van uitvoering</h3>
+      <ul><li>Indien een veilingitem door overmacht of andere omstandigheden buiten de invloedssfeer van de Organisator en/of aanbieder niet kan worden uitgevoerd, zullen partijen in overleg proberen een passend alternatief te vinden.</li><li>Indien uitvoering of een passend alternatief redelijkerwijs niet mogelijk is, wordt in overleg met de koper bepaald hoe hiermee wordt omgegaan.</li><li>De Organisator is niet aansprakelijk voor indirecte schade of gevolgschade als gevolg van het niet of niet volledig kunnen uitvoeren van een veilingitem, behoudens voor zover uitsluiting van aansprakelijkheid wettelijk niet is toegestaan.</li></ul>
+      <h3>9. Persoonsgegevens</h3>
+      <ul><li>Persoonsgegevens die in het kader van de veiling en de ondertekening van de koopovereenkomst worden verzameld, worden uitsluitend verwerkt voor zover dat noodzakelijk is voor de organisatie en administratieve en financiële afhandeling van de veiling.</li><li>Indien dit voor de uitvoering van een gewonnen veilingitem noodzakelijk is, kunnen de daarvoor benodigde persoonsgegevens aan de aanbieder van het betreffende item worden verstrekt.</li></ul>
+      <h3>10. ANBI, goed doel en fiscale behandeling</h3>
+      <ul><li>De Organisator is een Algemeen Nut Beogende Instelling (ANBI).</li><li>De opbrengst van de veiling is bestemd voor het tijdens het benefietgala bekendgemaakte goede doel.</li><li>De aankoop van een veilingitem is niet automatisch aan te merken als een fiscaal aftrekbare gift. Bij een veiling ontvangt de koper immers een tegenprestatie voor het betaalde bedrag.</li><li>De koper is zelf verantwoordelijk voor het beoordelen van eventuele fiscale gevolgen van de aankoop.</li></ul>
+      <h3>11. Onvoorziene situaties</h3>
+      <ul><li>In situaties waarin deze veilingvoorwaarden niet voorzien, beslist de veilingmeester over het verloop van de veiling. Voor overige organisatorische, financiële of juridische aangelegenheden beslist de Organisator.</li></ul>
+      <h3>12. Toepasselijk recht</h3>
+      <ul><li>Op de veiling, deze veilingvoorwaarden en de daaruit voortvloeiende overeenkomsten is Nederlands recht van toepassing.</li><li>Eventuele geschillen worden bij voorkeur eerst in onderling overleg opgelost.</li><li>Indien dit niet mogelijk blijkt, kan het geschil worden voorgelegd aan de volgens de wet bevoegde rechter.</li></ul>
+      <p>Stichting Vergeet Mij Niet Gala<br>Wittevrouwensingel 1<br>3581 GA  UTRECHT<br>E: info@vergeetmijnietgala.nl<br>T. 085 – 90 22 831<br>W. www.vergeetmijnietgala.nl</p>
+      <p>ANBI/RSIN: 869080520</p>
+      <!-- /voorwaarden -->
+  </div>
+  <button type="button" class="dlg-sluit" id="vw-sluit" aria-label="Sluiten">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
+  </button>
+</dialog>
 
 <dialog class="kv-dialog" id="kavel-dialog" aria-label="Kavel">
   <div class="dlg-in">
@@ -783,6 +871,13 @@ if(hero){
   addEventListener('resize', navStand);
   navStand();
 }
+
+// de veilingvoorwaarden
+const vwDlg=document.getElementById('vw-dialog');
+document.getElementById('vw-open').addEventListener('click',()=>{ vwDlg.showModal(); document.body.classList.add('dlg-open'); });
+document.getElementById('vw-sluit').addEventListener('click',()=>vwDlg.close());
+vwDlg.addEventListener('click',e=>{ if(e.target===vwDlg) vwDlg.close(); });
+vwDlg.addEventListener('close',()=>{ if(!dlg.open) document.body.classList.remove('dlg-open'); });
 
 // een kavel in het groot: schermvullend op mobiel, een venster op desktop
 const dlg=document.getElementById('kavel-dialog');
