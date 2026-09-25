@@ -1,6 +1,12 @@
-# bronbestanden, te groot of niet nodig in de repo
+# bronbestanden en losse bestanden die in deze map belanden: niet publiceren
 *.pptx
-_orig/
-.DS_Store
-__pycache__/
+*.docx
+*.pdf
+*.mp4
+*.csv
 *.JPG
+*.webp
+!kavels/*.webp
+_orig/
+__pycache__/
+.DS_Store

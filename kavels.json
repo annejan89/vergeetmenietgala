@@ -1,23 +1,52 @@
 [
  {
-  "id": "k01",
+  "id": "k17",
   "num": "1",
-  "titel": "Net Alsof — VIP-arrangement Jochem Myjer",
-  "intro": "Een avond rond de show Net Alsof in Koninklijk Theater Carré.",
-  "meta": "4 PERSONEN · 21 NOVEMBER 2026",
+  "slide": null,
+  "titel": "KRUG Experience bij restaurant Flore**",
+  "intro": "Een compleet verzorgd Krug Champagne Diner bij Restaurant Flore** in Hotel De L'Europe in Amsterdam.",
+  "meta": "2 PERSONEN",
   "bullets": [
-   "Vier kaarten in een VIP-loge",
-   "Meet & greet met Jochem Myjer na afloop",
-   "Twee suites in Hotel De L’Europe",
-   "Diner in Trattoria Graziella",
-   "Shuttle van hotel naar theater en terug"
+   "Diner bij Flore**, Hotel De L'Europe Amsterdam",
+   "Begeleidend champagnearrangement van Krug",
+   "Voor twee personen"
   ],
-  "aanbieder": "Jochem Myjer, Hotel De L’Europe en Trattoria Graziella",
-  "slide": 27
+  "aanbieder": "LVMH en Restaurant Flore**",
+  "minimum": 1000
+ },
+ {
+  "id": "k07",
+  "num": "2",
+  "titel": "Diner bij Da Vinci* met privé-optreden",
+  "intro": "Aan tafel bij Margo Reuten en Petro Kools in Maasbracht.",
+  "meta": "10 PERSONEN",
+  "bullets": [
+   "Volledig verzorgd diner bij Da Vinci* voor 10 personen",
+   "De mooiste wijnen uit de kelder",
+   "Miniconcert van de Limburgse tenor Ivo van der Bijl"
+  ],
+  "aanbieder": "Restaurant Da Vinci* en Ivo van der Bijl",
+  "slide": 34,
+  "minimum": 3500
+ },
+ {
+  "id": "k14",
+  "num": "3",
+  "titel": "Het Biertafelboek van Govert de Roos",
+  "intro": "Een gelimiteerde, genummerde Collectors Box van topfotograaf Govert de Roos.",
+  "meta": "COLLECTORS BOX",
+  "bullets": [
+   "Nooit eerder gepubliceerd archiefwerk",
+   "Voucher voor drie zelfgekozen prints",
+   "Gesigneerd en met certificaat van authenticiteit"
+  ],
+  "aanbieder": "Govert de Roos",
+  "slide": 41,
+  "minimum": 1000
  },
  {
   "id": "k02",
-  "num": "2",
+  "num": "4",
   "titel": "Koetsentocht langs de Vecht",
   "intro": "Een dag langs de Vecht, met Friese paarden voor de koets.",
   "meta": "4 PERSONEN",
@@ -27,11 +56,12 @@
    "Volledig verzorgde lunch bij De Nederlanden* in Vreeland"
   ],
   "aanbieder": "Stalhouderij De Zadelhoff en De Nederlanden*",
-  "slide": 28
+  "slide": 28,
+  "minimum": 5000
  },
  {
   "id": "k03a",
-  "num": "3A",
+  "num": "5A",
   "titel": "Miniatuur KLM-huisje Rijksmuseum",
   "intro": "Een collectors item: de special edition van het Rijksmuseum, één van slechts honderd.",
   "meta": "2 PERSONEN",
@@ -41,11 +71,12 @@
    "Volledig verzorgde lunch bij Restaurant Rijks*"
   ],
   "aanbieder": "KLM, Rijksmuseum en Restaurant Rijks*",
-  "slide": 29
+  "slide": 29,
+  "minimum": 3500
  },
  {
   "id": "k03b",
-  "num": "3B",
+  "num": "5B",
   "titel": "Miniatuur KLM-huisje Hotel Okura Amsterdam",
   "intro": "Het huisje van het huis waar we vanavond te gast zijn — ook één van honderd.",
   "meta": "2 PERSONEN",
@@ -55,11 +86,12 @@
    "Diner in Ciel Bleu**"
   ],
   "aanbieder": "Hotel Okura Amsterdam",
-  "slide": 30
+  "slide": 30,
+  "minimum": 3500
  },
  {
   "id": "k04",
-  "num": "4",
+  "num": "6",
   "titel": "De Burgemeester × Moët & Chandon en The House of Caviar",
   "intro": "Sander en Anne Spruit van sterrenrestaurant De Burgemeester koken bij u thuis.",
   "meta": "10 PERSONEN",
@@ -70,26 +102,59 @@
    "Kaviaarproeverij van The House of Caviar"
   ],
   "aanbieder": "De Burgemeester*, Moët & Chandon en The House of Caviar",
-  "slide": 31
+  "slide": 31,
+  "minimum": 5000
  },
  {
-  "id": "k05",
-  "num": "5",
-  "titel": "Overnachten met uitzicht op de luipaarden",
-  "intro": "Een nacht in Huize Welgelegen in ARTIS — vanuit de masterbedroom zicht op de luipaarden.",
-  "meta": "6 PERSONEN",
+  "id": "k12",
+  "num": "7",
+  "titel": "Legends Lounge — PSV × Atlético Madrid",
+  "intro": "Het Champions League-duel in het Philips Stadion vanuit de Legends Lounge.",
+  "meta": "2 PERSONEN · 9 DECEMBER 2026",
   "bullets": [
-   "Overnachting voor 6 personen",
-   "Privérondleiding door ARTIS",
-   "Twee dagen toegang tot ARTIS, het Groote Museum en Micropia",
-   "Culinaire avond van Het Amsterdammertje*"
+   "Twee plaatsen in de Legends Lounge",
+   "PSV-legendes aan tafel",
+   "Four-handsdiner van Adrian Zarzo (Zarzo*) en Begoña Rodrigo (La Salita*)"
   ],
-  "aanbieder": "ARTIS en Restaurant Het Amsterdammertje*",
-  "slide": 32
+  "aanbieder": "Legends Lounge en Restaurant Zarzo*",
+  "slide": 39,
+  "minimum": 4000
+ },
+ {
+  "id": "k13",
+  "num": "8",
+  "titel": "Legends Lounge — PSV × Atlético Madrid",
+  "intro": "Dit kavel wordt twee keer geveild, dit is de tweede.",
+  "meta": "2 PERSONEN · 9 DECEMBER 2026",
+  "bullets": [
+   "Twee plaatsen in de Legends Lounge",
+   "PSV-legendes aan tafel",
+   "Four-handsdiner van Adrian Zarzo (Zarzo*) en Begoña Rodrigo (La Salita*)"
+  ],
+  "aanbieder": "Legends Lounge en Restaurant Zarzo*",
+  "slide": 40,
+  "minimum": 4000
+ },
+ {
+  "id": "k15",
+  "num": "9",
+  "titel": "Champions Lounge — Ajax op topniveau",
+  "intro": "Ajax vanuit de meest prestigieuze skylounge van de Johan Cruijff ArenA.",
+  "meta": "2 PERSONEN",
+  "bullets": [
+   "Champions Lounge, volledig verzorgd arrangement",
+   "4-gangen sterrendiner",
+   "Analyse van Sjaak Swart en Ronald de Boer",
+   "VIP-parkeren",
+   "’t Huys Suite in Hotel De L’Europe"
+  ],
+  "aanbieder": "Champions Lounge en Hotel De L’Europe",
+  "slide": 42,
+  "minimum": 4500
  },
  {
   "id": "k06",
-  "num": "6",
+  "num": "10",
   "titel": "Taxirit in een Porsche 911 GT3 Cup",
   "intro": "De snelste taxirit van uw leven: ruim 500 pk over het circuit van Zandvoort.",
   "meta": "4 PERSONEN",
@@ -99,65 +164,8 @@
    "Volledig verzorgde lunch bij De Bokkedoorns** in de duinen"
   ],
   "aanbieder": "B&R Motorsport en De Bokkedoorns**",
-  "slide": 33
- },
- {
-  "id": "k07",
-  "num": "7",
-  "titel": "Diner bij Da Vinci* met privé-optreden",
-  "intro": "Aan tafel bij Margo Reuten en Petro Kools in Maasbracht.",
-  "meta": "10 PERSONEN",
-  "bullets": [
-   "Volledig verzorgd diner bij Da Vinci* voor 10 personen",
-   "De mooiste wijnen uit de kelder",
-   "Miniconcert van de Limburgse tenor Ivo van der Bijl"
-  ],
-  "aanbieder": "Restaurant Da Vinci* en Ivo van der Bijl",
-  "slide": 34
- },
- {
-  "id": "k08",
-  "num": "8",
-  "titel": "Tafel op de black-tie VIP Night van MASTERS EXPO",
-  "intro": "Yveske’s Kitchen tijdens de legendarische VIP Night van het 25-jarige MASTERS EXPO.",
-  "meta": "10 PERSONEN · 12 DECEMBER",
-  "bullets": [
-   "Eigen tafel voor 10 personen, black tie",
-   "Champagne en kaviaar",
-   "Viergangendiner van chefs met samen 41 Michelinsterren",
-   "Live muziek en ontmoetingen met de topchefs"
-  ],
-  "aanbieder": "MASTERS EXPO",
-  "slide": 35
- },
- {
-  "id": "k09",
-  "num": "9",
-  "titel": "Champagnelunch bij Aan de Poel**",
-  "intro": "Aan tafel bij Stefan van Sprang en Robert Veuger in Amstelveen.",
-  "meta": "10 PERSONEN",
-  "bullets": [
-   "Proeverij van Moët & Chandon",
-   "Volledig verzorgde 5-gangenlunch voor 10 personen",
-   "Champagne en mooie wijnen"
-  ],
-  "aanbieder": "Aan de Poel** en Moët & Chandon",
-  "slide": 36
- },
- {
-  "id": "k10",
-  "num": "10",
-  "titel": "Per helikopter van De Bloemenbeek naar Inter Scaldes",
-  "intro": "Van Twente naar Zeeland — per helikopter, tussen twee sterrenrestaurants.",
-  "meta": "4 PERSONEN",
-  "bullets": [
-   "Twee suites in Landhuishotel De Bloemenbeek*",
-   "Volledig verzorgd sterrendiner en ontbijt",
-   "Helikoptervlucht naar Zeeland",
-   "Landing in de tuin van Inter Scaldes** voor de lunch"
-  ],
-  "aanbieder": "De Bloemenbeek* en Inter Scaldes**",
-  "slide": 37
+  "slide": 33,
+  "minimum": 3500
  },
  {
   "id": "k11",
@@ -171,65 +179,73 @@
    "Suite en ontbijt in Hotel Merlet"
   ],
   "aanbieder": "Hotel Restaurant Merlet*",
-  "slide": 38
+  "slide": 38,
+  "minimum": 3500
  },
  {
-  "id": "k12",
+  "id": "k01",
   "num": "12",
-  "titel": "Legends Lounge — PSV × Atlético Madrid",
-  "intro": "Het Champions League-duel in het Philips Stadion vanuit de Legends Lounge.",
-  "meta": "2 PERSONEN · 9 DECEMBER 2026",
+  "titel": "Net Alsof — VIP-arrangement Jochem Myjer",
+  "intro": "Een avond rond de show Net Alsof in Koninklijk Theater Carré.",
+  "meta": "4 PERSONEN · 21 NOVEMBER 2026",
   "bullets": [
-   "Twee plaatsen in de Legends Lounge",
-   "PSV-legendes aan tafel",
-   "Four-handsdiner van Adrian Zarzo (Zarzo*) en Begoña Rodrigo (La Salita*)"
+   "Vier kaarten in een VIP-loge",
+   "Meet & greet met Jochem Myjer na afloop",
+   "Twee suites in Hotel De L’Europe",
+   "Diner in Trattoria Graziella",
+   "Shuttle van hotel naar theater en terug"
   ],
-  "aanbieder": "Legends Lounge en Restaurant Zarzo*",
-  "slide": 39
+  "aanbieder": "Jochem Myjer, Hotel De L’Europe en Trattoria Graziella",
+  "slide": 27,
+  "minimum": 5500
  },
  {
-  "id": "k13",
+  "id": "k05",
   "num": "13",
-  "titel": "Legends Lounge — PSV × Atlético Madrid",
-  "intro": "Dit kavel wordt twee keer geveild — dit is de tweede.",
-  "meta": "2 PERSONEN · 9 DECEMBER 2026",
+  "titel": "Overnachten met uitzicht op de luipaarden",
+  "intro": "Een nacht in Huize Welgelegen in ARTIS — vanuit de masterbedroom zicht op de luipaarden.",
+  "meta": "6 PERSONEN",
   "bullets": [
-   "Twee plaatsen in de Legends Lounge",
-   "PSV-legendes aan tafel",
-   "Four-handsdiner van Adrian Zarzo (Zarzo*) en Begoña Rodrigo (La Salita*)"
+   "Overnachting voor 6 personen",
+   "Privérondleiding door ARTIS",
+   "Twee dagen toegang tot ARTIS, het Groote Museum en Micropia",
+   "Culinaire avond van Het Amsterdammertje*"
   ],
-  "aanbieder": "Legends Lounge en Restaurant Zarzo*",
-  "slide": 40
+  "aanbieder": "ARTIS en Restaurant Het Amsterdammertje*",
+  "slide": 32,
+  "minimum": 5000
  },
  {
-  "id": "k14",
+  "id": "k10",
   "num": "14",
-  "titel": "Het Biertafelboek van Govert de Roos",
-  "intro": "Een gelimiteerde, genummerde Collectors Box van topfotograaf Govert de Roos.",
-  "meta": "COLLECTORS BOX",
+  "titel": "Per helikopter van De Bloemenbeek naar Inter Scaldes",
+  "intro": "Van Twente naar Zeeland — per helikopter, tussen twee sterrenrestaurants.",
+  "meta": "4 PERSONEN",
   "bullets": [
-   "Nooit eerder gepubliceerd archiefwerk",
-   "Voucher voor drie zelfgekozen prints",
-   "Gesigneerd en met certificaat van authenticiteit"
+   "Twee suites in Landhuishotel De Bloemenbeek*",
+   "Volledig verzorgd sterrendiner en ontbijt",
+   "Helikoptervlucht naar Zeeland",
+   "Landing in de tuin van Inter Scaldes** voor de lunch"
   ],
-  "aanbieder": "Govert de Roos",
-  "slide": 41
+  "aanbieder": "De Bloemenbeek* en Inter Scaldes**",
+  "slide": 37,
+  "minimum": 8000
  },
  {
-  "id": "k15",
+  "id": "k08",
   "num": "15",
-  "titel": "Champions Lounge — Ajax op topniveau",
-  "intro": "Ajax vanuit de meest prestigieuze skylounge van de Johan Cruijff ArenA.",
-  "meta": "2 PERSONEN",
+  "titel": "Tafel op de black-tie VIP Night van MASTERS EXPO",
+  "intro": "Yveske’s Kitchen tijdens de legendarische VIP Night van het 25-jarige MASTERS EXPO.",
+  "meta": "10 PERSONEN · 12 DECEMBER",
   "bullets": [
-   "Champions Lounge, volledig verzorgd arrangement",
-   "4-gangen sterrendiner",
-   "Analyse van Sjaak Swart en Ronald de Boer",
-   "VIP-parkeren",
-   "’t Huys Suite in Hotel De L’Europe"
+   "Eigen tafel voor 10 personen, black tie",
+   "Champagne en kaviaar",
+   "Viergangendiner van chefs met samen 41 Michelinsterren",
+   "Live muziek en ontmoetingen met de topchefs"
   ],
-  "aanbieder": "Champions Lounge en Hotel De L’Europe",
-  "slide": 42
+  "aanbieder": "MASTERS EXPO",
+  "slide": 35,
+  "minimum": 2500
  },
  {
   "id": "k16",
@@ -239,6 +255,22 @@
   "meta": "GENUMMERDE EDITIE",
   "bullets": [],
   "aanbieder": "Uitgeverij Komma",
-  "slide": 43
+  "slide": 43,
+  "minimum": 3000
+ },
+ {
+  "id": "k09",
+  "num": "17",
+  "titel": "Champagnelunch bij Aan de Poel**",
+  "intro": "Aan tafel bij Stefan van Sprang en Robert Veuger in Amstelveen.",
+  "meta": "10 PERSONEN",
+  "bullets": [
+   "Proeverij van Moët & Chandon",
+   "Volledig verzorgde 5-gangenlunch voor 10 personen",
+   "Champagne en mooie wijnen"
+  ],
+  "aanbieder": "Aan de Poel** en Moët & Chandon",
+  "slide": 36,
+  "minimum": 3000
  }
 ]
