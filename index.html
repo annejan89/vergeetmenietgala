@@ -195,6 +195,11 @@ h4{font-size:16px}
 .dlg-raster{order:-1;display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 0 4px}
 .dlg-raster img{width:100%;aspect-ratio:1/1;object-fit:cover;background:var(--beige-donker)}
 .dlg-raster img:first-child{grid-column:1/-1}      /* het eerste beeld altijd groot */
+.dlg-raster img{opacity:0;transform:scale(.94);transition:opacity .45s ease,transform .7s cubic-bezier(.2,.7,.3,1)}
+.dlg-raster img.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .dlg-raster img{opacity:1;transform:none;transition:none}
+}
 .dlg-raster:empty{display:none}
 .dlg-hart{margin-top:28px;display:inline-flex;align-items:center;gap:10px;background:transparent;
   border:1px solid var(--lijn-2);padding:11px 20px;font-family:'Source Sans 3',sans-serif;font-size:16px;
@@ -774,6 +779,7 @@ const dlgTel=document.getElementById('dlg-tel');
 const dlgVorige=document.getElementById('dlg-vorige');
 const dlgVolgende=document.getElementById('dlg-volgende');
 let open=-1;
+const zoomTimers=[];
 
 function zichtbareKaarten(){ return cards.filter(c=>!c.classList.contains('is-hide')); }
 
@@ -790,11 +796,25 @@ function vulDialoog(card){
   dlgTekst.appendChild(hart);
 
   const fotos=(card.dataset.fotos||'').split('|').filter(Boolean);
-  dlgRaster.replaceChildren(...fotos.map(p=>{
+  const beelden=fotos.map(p=>{
     const b=document.createElement('img');
-    b.src=p; b.loading='lazy'; b.alt=card.querySelector('h3').textContent;
+    b.src=p; b.loading='eager'; b.alt=card.querySelector('h3').textContent;
     return b;
-  }));
+  });
+  dlgRaster.replaceChildren(...beelden);
+  zoomTimers.forEach(clearTimeout); zoomTimers.length=0;
+  if(stil.matches){
+    beelden.forEach(b=>b.classList.add('in'));
+  }else{
+    const volgorde=beelden.map((_,i)=>i);
+    for(let i=volgorde.length-1;i>0;i--){                 // willekeurige volgorde
+      const j=Math.floor(Math.random()*(i+1));
+      [volgorde[i],volgorde[j]]=[volgorde[j],volgorde[i]];
+    }
+    volgorde.forEach((idx,plek)=>{
+      zoomTimers.push(setTimeout(()=>beelden[idx].classList.add('in'), 90+plek*110));
+    });
+  }
 
   dlgTel.textContent='Kavel '+card.querySelector('.kv-ronde').textContent.replace('Kavel ','')+' van '+lijst.length;
   dlgVorige.disabled = open<=0;
@@ -822,7 +842,8 @@ document.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',e
 document.getElementById('dlg-sluit').addEventListener('click',()=>dlg.close());
 dlgVorige.addEventListener('click',()=>blader(-1));
 dlgVolgende.addEventListener('click',()=>blader(1));
-dlg.addEventListener('close',()=>{ document.body.classList.remove('dlg-open'); dlgRaster.replaceChildren(); });
+dlg.addEventListener('close',()=>{ document.body.classList.remove('dlg-open');
+  zoomTimers.forEach(clearTimeout); zoomTimers.length=0; dlgRaster.replaceChildren(); });
 dlg.addEventListener('click',e=>{ if(e.target===dlg) dlg.close(); });   // klik naast het venster sluit
 addEventListener('keydown',e=>{
   if(!dlg.open) return;
