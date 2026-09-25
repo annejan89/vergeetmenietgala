@@ -23,9 +23,9 @@
   --z-nav:100; --z-float:120;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-x:clip}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{background:var(--beige);color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;font-weight:300;font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{background:var(--beige);color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;font-weight:300;font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%}
 a{color:inherit}
 h1,h2,h3,h4{font-family:Playfair,Georgia,serif;font-weight:500;line-height:1.1;text-wrap:balance}
@@ -86,7 +86,8 @@ h4{font-size:16px}
 }
 
 /* hero: foto over het volle scherm, tekst in de hoeken */
-.hero{position:relative;min-height:100svh;display:flex;color:var(--wit);overflow:hidden}
+.hero{position:relative;min-height:100svh;display:flex;color:var(--wit);overflow:hidden;
+  view-timeline-name:--hero;view-timeline-axis:block}
 .hero-foto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .hero-waas{position:absolute;inset:0;background:linear-gradient(180deg,rgba(39,37,28,.42) 0%,rgba(39,37,28,.12) 38%,rgba(39,37,28,.55) 100%)}
 .hero-in{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:space-between;
@@ -95,15 +96,17 @@ h4{font-size:16px}
 .hero-logo{width:clamp(88px,9vw,128px);height:auto}
 .hero-datum{font-family:'PP Frama','Source Sans 3',sans-serif;font-weight:200;
   font-size:clamp(34px,5.4vw,72px);line-height:1.02;color:var(--wit)}
-.hero-onder{display:flex;align-items:flex-end;justify-content:space-between;gap:24px}
+.hero-onder{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.hero-links{display:flex;flex-direction:column;gap:18px}
 .hero-scroll{display:block;flex:none;width:clamp(44px,4vw,64px);opacity:.85;transition:transform .3s,opacity .2s}
 .hero-scroll:hover{opacity:1;transform:translateY(4px)}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px}
 .hero-claim{font-family:Playfair,Georgia,serif;font-weight:500;line-height:1.12;text-align:right;
   font-size:clamp(22px,3.4vw,52px);text-wrap:balance}
 @media(max-width:620px){
-  .hero-onder{align-items:flex-end}
-  .hero-scroll{width:40px}
-  .hero-claim{font-size:22px}
+  .hero-onder{flex-direction:column;align-items:stretch;gap:20px}
+  .hero-scroll{display:none}
+  .hero-claim{font-size:22px;order:-1}
 }
 
 /* secties */
@@ -157,6 +160,24 @@ h4{font-size:16px}
 .kv-dots{position:absolute;left:12px;bottom:12px;z-index:2;display:flex;gap:6px}
 .kv-dots button{width:22px;height:4px;padding:0;border:0;cursor:pointer;background:rgba(255,255,255,.55)}
 .kv-dots button.is-on{background:var(--geel)}
+
+/* parallax: de hero loopt trager weg dan de pagina, de kaarten schuiven mee.
+   Scroll-driven animaties; zonder ondersteuning staat alles gewoon stil. */
+@supports (animation-timeline: view()){
+  @media (prefers-reduced-motion:no-preference){
+    .hero-foto{animation:hero-parallax linear both;animation-timeline:--hero;animation-range:exit 0% exit 100%}
+    @keyframes hero-parallax{from{transform:translateY(0) scale(1)}to{transform:translateY(12%) scale(1.06)}}
+
+    .hero-in{animation:hero-tekst linear both;animation-timeline:--hero;animation-range:exit 0% exit 100%}
+    @keyframes hero-tekst{from{transform:translateY(0);opacity:1}to{transform:translateY(-24px);opacity:.35}}
+
+    .kv{animation:kv-parallax linear both;animation-timeline:view();animation-range:entry 0% exit 100%}
+    @keyframes kv-parallax{from{transform:translateY(16px)}to{transform:translateY(-16px)}}
+    .kv:hover{transform:none}                       /* de animatie stuurt de verschuiving */
+    .kv-grid>.kv:nth-child(3n+2){animation-name:kv-parallax-2}
+    @keyframes kv-parallax-2{from{transform:translateY(24px)}to{transform:translateY(-24px)}}
+  }
+}
 
 /* de hele kaart is aanklikbaar; het hartje ligt erboven */
 .kv-open{position:absolute;inset:0;z-index:1;border:0;padding:0;background:transparent;cursor:pointer}
@@ -293,9 +314,15 @@ body.dlg-open{overflow:hidden}
       <p class="hero-datum">6<br>oktober<br>2026</p>
     </div>
     <div class="hero-onder">
-      <a class="hero-scroll" href="#programma" aria-label="Naar het programma">
-        <img src="assets/scroll-indicator-wit.svg" alt="">
-      </a>
+      <div class="hero-links">
+        <a class="hero-scroll" href="#programma" aria-label="Naar het programma">
+          <img src="assets/scroll-indicator-wit.svg" alt="">
+        </a>
+        <div class="hero-cta">
+          <a class="btn btn-geel" href="#kavels">De kavels</a>
+          <a class="btn btn-lijn-licht" href="#programma">Het programma</a>
+        </div>
+      </div>
       <p class="hero-claim">Samen komen wij in actie,<br>voor Alzheimer Nederland</p>
     </div>
   </div>

@@ -10,3 +10,4 @@
 _orig/
 __pycache__/
 .DS_Store
+*.zip
