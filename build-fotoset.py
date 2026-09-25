@@ -81,13 +81,13 @@ BRON = {
             "Kavel 16 - Ramses Shaffy/Ramses Shaffy - Didi _ Special edition/Ramses Shaffy - Didi - spread 8.jpg",
             "Kavel 16 - Ramses Shaffy/Ramses Shaffy - Didi _ Special edition/Ramses Shaffy - Didi - spread 14.jpg"],
     "k09": ["Kavel -  Aan de Poel/8B3A9507.jpeg"],
+    "k14": ["_orig/k14-boek.jpg"],
 }
 
 # beelden die al eerder klaargezet zijn en in het raster mee mogen
 EXTRA = {
     "k05": ["_orig/k05s2.jpg", "_orig/k05s3.jpg"],
     "k10": ["_orig/k10s3.jpg"],
-    "k14": ["_orig/k14.jpg"],
     "k16": ["_orig/k16.jpg"],
 }
 
