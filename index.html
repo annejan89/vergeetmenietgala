@@ -252,12 +252,11 @@ h4{font-size:16px}
 
 @media(min-width:860px){
   .kv-dialog{width:min(1180px,94vw);height:auto;min-height:min(88vh,720px);max-height:88vh;margin:auto}
-  .dlg-in{display:grid;grid-template-columns:minmax(0,6.6fr) minmax(0,4.4fr);grid-template-rows:minmax(0,1fr);
+  .dlg-in{display:grid;grid-template-columns:minmax(0,6.8fr) minmax(0,3.2fr);grid-template-rows:minmax(0,1fr);
     max-height:88vh;overflow:hidden;padding-bottom:0}
   .dlg-raster{order:0;display:grid;grid-template-columns:1fr 1fr;align-content:start;
     overflow-x:hidden;padding:8px 8px 8px 0;gap:6px;align-self:stretch;background:var(--wit)}
   .dlg-raster img{aspect-ratio:1/1;height:auto;width:100%}
-  .dlg-raster:has(img:nth-child(4)) img:first-child{grid-column:auto}
   .dlg-raster:has(img:nth-child(7)){grid-template-columns:repeat(3,1fr)}
   .dlg-raster img{flex:none;width:100%}
   .dlg-raster img:first-child{grid-column:1/-1}
@@ -869,8 +868,12 @@ document.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',e
 document.getElementById('dlg-sluit').addEventListener('click',()=>dlg.close());
 dlgVorige.addEventListener('click',()=>blader(-1));
 dlgVolgende.addEventListener('click',()=>blader(1));
-dlg.addEventListener('close',()=>{ document.body.classList.remove('dlg-open');
-  zoomTimers.forEach(clearTimeout); zoomTimers.length=0; dlgRaster.replaceChildren(); });
+dlg.addEventListener('close',()=>{
+  zoomTimers.forEach(clearTimeout); zoomTimers.length=0;
+  if(dlg.open) return;                       // alweer geopend: inhoud laten staan
+  document.body.classList.remove('dlg-open');
+  dlgRaster.replaceChildren();
+});
 dlg.addEventListener('click',e=>{ if(e.target===dlg) dlg.close(); });   // klik naast het venster sluit
 addEventListener('keydown',e=>{
   if(!dlg.open) return;
