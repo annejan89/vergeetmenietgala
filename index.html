@@ -192,6 +192,22 @@ h4{font-size:16px}
   background:var(--wit);color:var(--ink);overflow:hidden}
 .kv-dialog:focus,.kv-dialog:focus-visible{outline:none}
 
+/* een foto in volledige weergave */
+.foto-dialog{width:100%;max-width:none;height:100%;max-height:none;margin:0;padding:0;border:0;
+  background:var(--ink);overflow:hidden;display:grid;place-items:center}
+.foto-dialog:focus,.foto-dialog:focus-visible{outline:none}
+.foto-dialog::backdrop{background:rgba(39,37,28,.86)}
+.foto-dialog img{max-width:100%;max-height:100svh;width:auto;height:auto;object-fit:contain}
+.foto-nav{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:center;gap:16px;
+  padding:12px;background:linear-gradient(180deg,rgba(39,37,28,0),rgba(39,37,28,.85))}
+.foto-nav button{width:44px;height:44px;display:grid;place-items:center;background:transparent;
+  border:1px solid rgba(246,244,235,.4);color:var(--beige);cursor:pointer}
+.foto-nav button:hover{background:rgba(246,244,235,.14)}
+.foto-nav button[disabled]{opacity:.3;cursor:default}
+.foto-nav svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6}
+.foto-tel{min-width:9ch;text-align:center;font-size:15px;color:var(--op-donker);font-variant-numeric:tabular-nums}
+.dlg-raster img{cursor:zoom-in}
+
 /* venster met de veilingvoorwaarden */
 .vw-dialog{width:100%;max-width:none;height:100%;max-height:none;margin:0;padding:0;border:0;
   background:var(--wit);color:var(--ink);overflow:hidden}
@@ -753,6 +769,18 @@ body.dlg-open{overflow:hidden}
   <div class="wrap"><p class="foot-note">Stichting Vergeet Mij Niet Gala &middot; Wittevrouwensingel 1, 3581 GA Utrecht &middot; Mede mogelijk gemaakt door de Alliance Gastronomique en Hotel Okura Amsterdam</p></div>
 </footer>
 
+<dialog class="foto-dialog" id="foto-dialog" aria-label="Foto">
+  <img id="foto-groot" alt="">
+  <div class="foto-nav">
+    <button type="button" id="foto-vorige" aria-label="Vorige foto"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <p class="foto-tel" id="foto-tel"></p>
+    <button type="button" id="foto-volgende" aria-label="Volgende foto"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+  </div>
+  <button type="button" class="dlg-sluit" id="foto-sluit" aria-label="Sluiten">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
+  </button>
+</dialog>
+
 <dialog class="vw-dialog" id="vw-dialog" aria-labelledby="vw-titel">
   <div class="vw-in">
     <h2 id="vw-titel">Veilingvoorwaarden</h2>
@@ -974,6 +1002,40 @@ addEventListener('keydown',e=>{
   if(e.key==='ArrowRight') blader(1);
   if(e.key==='ArrowLeft') blader(-1);
 });
+// een foto in volledige weergave
+const fotoDlg=document.getElementById('foto-dialog');
+const fotoGroot=document.getElementById('foto-groot');
+const fotoTel=document.getElementById('foto-tel');
+const fotoVorige=document.getElementById('foto-vorige');
+const fotoVolgende=document.getElementById('foto-volgende');
+let fotoLijst=[], fotoNu=0;
+
+function toonFoto(n){
+  fotoNu=Math.max(0,Math.min(fotoLijst.length-1,n));
+  const vierkant=fotoLijst[fotoNu];
+  fotoGroot.src=vierkant.replace(/-v(\d+)\.jpg$/, '-g$1.jpg');
+  fotoGroot.alt=dlgTekst.querySelector('h3')?.textContent||'';
+  fotoTel.textContent=(fotoNu+1)+' van '+fotoLijst.length;
+  fotoVorige.disabled=fotoNu===0;
+  fotoVolgende.disabled=fotoNu===fotoLijst.length-1;
+}
+dlgRaster.addEventListener('click',e=>{
+  const b=e.target.closest('img');
+  if(!b) return;
+  fotoLijst=[...dlgRaster.querySelectorAll('img')].map(i=>i.getAttribute('src'));
+  toonFoto(fotoLijst.indexOf(b.getAttribute('src')));
+  fotoDlg.showModal();
+});
+document.getElementById('foto-sluit').addEventListener('click',()=>fotoDlg.close());
+fotoVorige.addEventListener('click',()=>toonFoto(fotoNu-1));
+fotoVolgende.addEventListener('click',()=>toonFoto(fotoNu+1));
+fotoDlg.addEventListener('click',e=>{ if(e.target===fotoDlg||e.target===fotoGroot) fotoDlg.close(); });
+addEventListener('keydown',e=>{
+  if(!fotoDlg.open) return;
+  if(e.key==='ArrowRight'){e.preventDefault();toonFoto(fotoNu+1);}
+  if(e.key==='ArrowLeft'){e.preventDefault();toonFoto(fotoNu-1);}
+});
+
 </script>
 </body>
 </html>

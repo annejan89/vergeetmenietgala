@@ -94,7 +94,7 @@ EXTRA = {
 }
 
 UIT = "kavels"
-HOOFD_BREED, VIERKANT = 900, 760
+HOOFD_BREED, VIERKANT, VOLLEDIG = 900, 760, 1400
 
 
 def laad(pad):
@@ -164,6 +164,10 @@ if __name__ == "__main__":
             vk = f"{UIT}/{kid}-v{i+1}.jpg"
             snij(im, 1.0, VIERKANT, vk)                 # vierkant voor het raster
             beelden.append(vk)
+            vol = im.copy()                             # de hele foto voor de volledige weergave
+            vol.thumbnail((VOLLEDIG, VOLLEDIG), Image.LANCZOS)
+            vol.save(f"{UIT}/{kid}-g{i+1}.jpg", "JPEG", quality=80,
+                     optimize=True, progressive=True)
         overzicht[kid] = beelden
         print(f"{kid}: {len(bronnen)} bronnen -> hoofdfoto + {len(bronnen)} vierkant")
     json.dump(overzicht, open("_orig/_fotoset.json", "w"), indent=1)
