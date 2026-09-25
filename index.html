@@ -194,10 +194,18 @@ h4{font-size:16px}
 
 /* een foto in volledige weergave */
 .foto-dialog{width:100%;max-width:none;height:100%;max-height:none;margin:0;padding:0;border:0;
-  background:var(--ink);overflow:hidden;display:grid;place-items:center}
+  background:var(--ink);overflow:hidden}
+/* alleen de geopende dialog krijgt een display-waarde: anders overrulet die de
+   browserregel dialog:not([open]){display:none} en rendert het gesloten venster
+   als een blok onder de footer, met de sluitknop vast in beeld */
+.foto-dialog[open]{display:grid;place-items:center}
 .foto-dialog:focus,.foto-dialog:focus-visible{outline:none}
 .foto-dialog::backdrop{background:rgba(39,37,28,.86)}
-.foto-dialog img{max-width:100%;max-height:100svh;width:auto;height:auto;object-fit:contain}
+.foto-reeks{display:flex;width:100%;height:100svh;overflow-x:auto;scroll-snap-type:x mandatory;
+  scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.foto-reeks::-webkit-scrollbar{display:none}
+.foto-reeks figure{flex:0 0 100%;height:100%;display:grid;place-items:center;scroll-snap-align:center;padding:12px}
+.foto-dialog img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
 .foto-nav{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:center;gap:16px;
   padding:12px;background:linear-gradient(180deg,rgba(39,37,28,0),rgba(39,37,28,.85))}
 .foto-nav button{width:44px;height:44px;display:grid;place-items:center;background:transparent;
@@ -264,10 +272,18 @@ h4{font-size:16px}
 .dlg-raster img:first-child{flex-basis:96%}
 .dlg-raster img{opacity:0;transform:scale(.94);transition:opacity .45s ease,transform .7s cubic-bezier(.2,.7,.3,1)}
 .dlg-raster img.in{opacity:1;transform:none}
+@media(max-width:859px){
+  .dlg-raster img.in.kijk{animation:kenburns 8s linear both}
+  @keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.12)}}
+}
 @media (prefers-reduced-motion:reduce){
   .dlg-raster img{opacity:1;transform:none;transition:none}
 }
 .dlg-raster:empty{display:none}
+.dlg-stippen{order:-1;display:flex;justify-content:center;gap:6px;padding:10px 0 2px}
+.dlg-stippen span{width:26px;height:3px;background:var(--lijn-2);transition:background .2s}
+.dlg-stippen span.is-nu{background:var(--geel)}
+.dlg-stippen:empty{display:none}
 .dlg-hart{margin:0 0 24px;display:inline-flex;align-items:center;gap:10px;background:transparent;
   border:1px solid var(--lijn-2);padding:11px 20px;font-family:'Source Sans 3',sans-serif;font-size:16px;
   color:var(--ink);cursor:pointer;transition:background .2s,border-color .2s}
@@ -300,18 +316,16 @@ h4{font-size:16px}
   .dlg-in{display:grid;grid-template-columns:minmax(0,6.8fr) minmax(0,3.2fr);grid-template-rows:minmax(0,1fr);
     max-height:88vh;overflow:hidden;padding-bottom:0}
   /* de tegels passen zich aan de hoogte van het venster aan, zodat alles in beeld blijft */
+  .dlg-stippen{display:none}
   .dlg-raster{order:0;display:grid;justify-content:center;align-content:start;
     grid-template-columns:repeat(2, var(--tegel));grid-auto-rows:var(--tegel);
     overflow:hidden;padding:8px 8px 8px 0;gap:6px;align-self:stretch;background:var(--wit);
     --tegel:calc((100% - 14px)/2)}
   .dlg-raster img{aspect-ratio:1/1;width:100%;height:100%;object-fit:cover}
   .dlg-raster img:first-child{grid-column:span 2;grid-row:span 2}
-  .dlg-raster img{flex:none;width:100%}
-  .dlg-raster img:first-child{grid-column:1/-1}
   .dlg-tekst{padding:clamp(40px,4vw,60px);padding-bottom:calc(clamp(40px,4vw,60px) + 56px);overflow-y:auto}
   .dlg-tekst h3{font-size:clamp(30px,2.6vw,42px)}
   .dlg-tekst>p{font-size:22px}
-  .dlg-raster{padding:8px 8px 8px 0;overflow-y:auto;align-content:start;gap:8px}
   .dlg-raster:empty{display:none}
   .dlg-sluit{position:absolute;top:0;right:0;width:56px;height:56px}
   .dlg-nav{position:absolute;left:0;right:auto;top:auto;bottom:0;width:60%;height:64px;
@@ -321,6 +335,7 @@ h4{font-size:16px}
   .dlg-tel{min-width:9ch;font-size:14px}
 }
 body.dlg-open{overflow:hidden}
+body.dlg-open .nav{display:none}
 .kv-num{position:absolute;top:0;left:0;background:var(--geel);color:var(--ink);font-family:'PP Frama','Source Sans 3',sans-serif;font-weight:200;
   font-size:20px;line-height:1;padding:8px 12px;z-index:2}
 .kv-fav{position:absolute;top:10px;right:10px;z-index:2;width:40px;height:40px;border:1px solid var(--lijn-2);
@@ -770,7 +785,7 @@ body.dlg-open{overflow:hidden}
 </footer>
 
 <dialog class="foto-dialog" id="foto-dialog" aria-label="Foto">
-  <img id="foto-groot" alt="">
+  <div class="foto-reeks" id="foto-reeks"></div>
   <div class="foto-nav">
     <button type="button" id="foto-vorige" aria-label="Vorige foto"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
     <p class="foto-tel" id="foto-tel"></p>
@@ -823,6 +838,7 @@ body.dlg-open{overflow:hidden}
   <div class="dlg-in">
     <div class="dlg-tekst" id="dlg-tekst"></div>
     <div class="dlg-raster" id="dlg-raster"></div>
+    <div class="dlg-stippen" id="dlg-stippen" aria-hidden="true"></div>
   </div>
   <div class="dlg-nav">
     <button type="button" id="dlg-vorige" aria-label="Vorig kavel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
@@ -938,6 +954,7 @@ function vulDialoog(card){
   });
   dlgRaster.replaceChildren(...beelden);
   tegelMaat();
+  maakStippen(beelden.length);
   zoomTimers.forEach(clearTimeout); zoomTimers.length=0;
   if(stil.matches){
     beelden.forEach(b=>b.classList.add('in'));
@@ -959,6 +976,35 @@ function vulDialoog(card){
   dlg.querySelector('.dlg-in').scrollTop=0;
   sync();
 }
+
+// stipjes onder de veegbare reeks, plus de langzame zoom op het beeld in beeld
+const dlgStippen=document.getElementById('dlg-stippen');
+function maakStippen(aantal){
+  dlgStippen.replaceChildren();
+  if(innerWidth>=860 || aantal<2) return;
+  for(let i=0;i<aantal;i++){
+    const d=document.createElement('span');
+    if(i===0) d.className='is-nu';
+    dlgStippen.appendChild(d);
+  }
+  volgReeks();
+}
+function volgReeks(){
+  const beelden=[...dlgRaster.querySelectorAll('img')];
+  if(!beelden.length || !dlgStippen.children.length) return;
+  const midden=dlgRaster.scrollLeft + dlgRaster.clientWidth/2;
+  let dichtst=0, best=Infinity;
+  beelden.forEach((b,i)=>{
+    const c=b.offsetLeft + b.offsetWidth/2;
+    if(Math.abs(c-midden)<best){ best=Math.abs(c-midden); dichtst=i; }
+  });
+  [...dlgStippen.children].forEach((d,i)=>d.classList.toggle('is-nu', i===dichtst));
+  beelden.forEach((b,i)=>{
+    if(i===dichtst && !b.classList.contains('kijk')){ b.classList.add('kijk'); }
+    else if(i!==dichtst){ b.classList.remove('kijk'); }
+  });
+}
+dlgRaster.addEventListener('scroll', volgReeks, {passive:true});
 
 // de tegels krimpen tot alles in het venster past
 function tegelMaat(){
@@ -1004,32 +1050,47 @@ addEventListener('keydown',e=>{
 });
 // een foto in volledige weergave
 const fotoDlg=document.getElementById('foto-dialog');
-const fotoGroot=document.getElementById('foto-groot');
+const fotoReeks=document.getElementById('foto-reeks');
 const fotoTel=document.getElementById('foto-tel');
 const fotoVorige=document.getElementById('foto-vorige');
 const fotoVolgende=document.getElementById('foto-volgende');
 let fotoLijst=[], fotoNu=0;
 
-function toonFoto(n){
+function vulFotoReeks(){
+  fotoReeks.replaceChildren(...fotoLijst.map(p=>{
+    const f=document.createElement('figure');
+    const b=document.createElement('img');
+    b.src=p.replace(/-v(\d+)\.jpg$/, '-g$1.jpg');
+    b.alt=dlgTekst.querySelector('h3')?.textContent||'';
+    f.appendChild(b);
+    return f;
+  }));
+}
+function toonFoto(n, schuif=true){
   fotoNu=Math.max(0,Math.min(fotoLijst.length-1,n));
-  const vierkant=fotoLijst[fotoNu];
-  fotoGroot.src=vierkant.replace(/-v(\d+)\.jpg$/, '-g$1.jpg');
-  fotoGroot.alt=dlgTekst.querySelector('h3')?.textContent||'';
+  if(schuif) fotoReeks.scrollTo({left:fotoNu*fotoReeks.clientWidth, behavior:'auto'});
   fotoTel.textContent=(fotoNu+1)+' van '+fotoLijst.length;
   fotoVorige.disabled=fotoNu===0;
   fotoVolgende.disabled=fotoNu===fotoLijst.length-1;
 }
+fotoReeks.addEventListener('scroll',()=>{
+  const n=Math.round(fotoReeks.scrollLeft/fotoReeks.clientWidth);
+  if(n!==fotoNu) toonFoto(n,false);
+},{passive:true});
 dlgRaster.addEventListener('click',e=>{
   const b=e.target.closest('img');
   if(!b) return;
   fotoLijst=[...dlgRaster.querySelectorAll('img')].map(i=>i.getAttribute('src'));
-  toonFoto(fotoLijst.indexOf(b.getAttribute('src')));
+  vulFotoReeks();
   fotoDlg.showModal();
+  document.body.classList.add('dlg-open');
+  toonFoto(fotoLijst.indexOf(b.getAttribute('src')));
 });
 document.getElementById('foto-sluit').addEventListener('click',()=>fotoDlg.close());
 fotoVorige.addEventListener('click',()=>toonFoto(fotoNu-1));
 fotoVolgende.addEventListener('click',()=>toonFoto(fotoNu+1));
-fotoDlg.addEventListener('click',e=>{ if(e.target===fotoDlg||e.target===fotoGroot) fotoDlg.close(); });
+fotoDlg.addEventListener('click',e=>{ if(e.target===fotoDlg||e.target.tagName==='FIGURE') fotoDlg.close(); });
+fotoDlg.addEventListener('close',()=>{ if(!dlg.open && !vwDlg.open) document.body.classList.remove('dlg-open'); });
 addEventListener('keydown',e=>{
   if(!fotoDlg.open) return;
   if(e.key==='ArrowRight'){e.preventDefault();toonFoto(fotoNu+1);}
