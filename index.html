@@ -98,14 +98,12 @@ h4{font-size:16px}
   font-size:clamp(34px,5.4vw,72px);line-height:1.02;color:var(--wit)}
 .hero-onder{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
 .hero-links{display:flex;flex-direction:column;gap:18px}
-.hero-scroll{display:block;flex:none;width:clamp(44px,4vw,64px);opacity:.85;transition:transform .3s,opacity .2s}
-.hero-scroll:hover{opacity:1;transform:translateY(4px)}
-.hero-cta{display:flex;flex-wrap:wrap;gap:12px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px}
+.hero-cta .btn{font-size:clamp(17px,1.5vw,21px);padding:clamp(14px,1.4vw,18px) clamp(26px,2.6vw,40px)}
 .hero-claim{font-family:Playfair,Georgia,serif;font-weight:500;line-height:1.12;text-align:right;
   font-size:clamp(22px,3.4vw,52px);text-wrap:balance}
 @media(max-width:620px){
   .hero-onder{flex-direction:column;align-items:stretch;gap:20px}
-  .hero-scroll{display:none}
   .hero-claim{font-size:22px;order:-1}
 }
 
@@ -147,19 +145,6 @@ h4{font-size:16px}
 .kv-foto{aspect-ratio:4/5;background:var(--beige-donker);display:grid;place-items:center;overflow:hidden}
 .kv-foto img{width:100%;height:100%;object-fit:cover}
 .kv-foto--leeg::after{content:'';width:84px;height:84px;background:url('assets/bloem-monogram.svg') center/contain no-repeat;opacity:.18}
-/* beeldslider met langzame zoom (Ken Burns) */
-.kv-slider{position:relative}
-.kv-slider img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease}
-.kv-slider img.is-on{opacity:1;animation:kenburns 7s linear both}
-.kv-slider img.is-on:nth-child(2){animation-name:kenburns-2}
-.kv-slider img.is-on:nth-child(3){animation-name:kenburns-3}
-.kv-slider img.is-on:nth-child(4){animation-name:kenburns-2}
-@keyframes kenburns{from{transform:scale(1) translate(0,0)}to{transform:scale(1.12) translate(-2%,-1.5%)}}
-@keyframes kenburns-2{from{transform:scale(1.12) translate(2%,1.5%)}to{transform:scale(1) translate(0,0)}}
-@keyframes kenburns-3{from{transform:scale(1) translate(1.5%,-1.5%)}to{transform:scale(1.12) translate(-1.5%,1.5%)}}
-.kv-dots{position:absolute;left:12px;bottom:12px;z-index:2;display:flex;gap:6px}
-.kv-dots button{width:22px;height:4px;padding:0;border:0;cursor:pointer;background:rgba(255,255,255,.55)}
-.kv-dots button.is-on{background:var(--geel)}
 
 /* parallax: de hero loopt trager weg dan de pagina, de kaarten schuiven mee.
    Scroll-driven animaties; zonder ondersteuning staat alles gewoon stil. */
@@ -190,10 +175,7 @@ h4{font-size:16px}
   background:var(--wit);color:var(--ink);overflow:hidden}
 .kv-dialog::backdrop{background:rgba(39,37,28,.6);backdrop-filter:blur(3px)}
 .dlg-in{height:100%;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
-.dlg-beeld{position:relative;aspect-ratio:4/5;background:var(--beige-donker);overflow:hidden;max-height:62svh}
-.dlg-beeld .kv-foto{height:100%;aspect-ratio:auto}
-.dlg-beeld img{width:100%;height:100%;object-fit:cover}
-.dlg-tekst{padding:28px 20px 48px}
+.dlg-tekst{padding:64px 20px 32px}
 .dlg-tekst .kv-ronde{display:block;font-size:14px;text-transform:uppercase;letter-spacing:.12em;color:var(--ink-60)}
 .dlg-tekst h3{font-family:Playfair,Georgia,serif;font-weight:500;font-size:clamp(28px,6.4vw,40px);
   line-height:1.08;margin:10px 0 16px}
@@ -203,8 +185,14 @@ h4{font-size:16px}
 .dlg-tekst .kv-incl li{font-size:17px;padding-left:24px;line-height:1.45}
 .dlg-tekst .kv-incl li::before{top:.6em;width:9px;height:9px}
 .dlg-tekst .kv-meta{margin-top:28px;font-size:14px!important;padding-top:16px}
-.dlg-tekst .kv-min{font-size:34px!important;margin-top:14px}
+.dlg-tekst .kv-min{font-size:30px!important;margin-top:20px;padding:11px 18px}
+.dlg-tekst .kv-min span{font-size:13px}
 .dlg-tekst .kv-door{margin-top:24px;font-size:22px}
+
+/* het fotoraster: vierkanten, twee kolommen */
+.dlg-raster{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 20px 88px}
+.dlg-raster img{width:100%;aspect-ratio:1/1;object-fit:cover;background:var(--beige-donker)}
+.dlg-raster:empty{display:none}
 .dlg-hart{margin-top:28px;display:inline-flex;align-items:center;gap:10px;background:transparent;
   border:1px solid var(--lijn-2);padding:11px 20px;font-family:'Source Sans 3',sans-serif;font-size:16px;
   color:var(--ink);cursor:pointer;transition:background .2s,border-color .2s}
@@ -233,12 +221,13 @@ h4{font-size:16px}
 .dlg-in{padding-bottom:64px}
 
 @media(min-width:860px){
-  .kv-dialog{width:min(1100px,92vw);height:auto;max-height:88vh;margin:auto;border:0}
-  .dlg-in{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);padding-bottom:0;max-height:88vh}
-  .dlg-beeld{aspect-ratio:auto;max-height:none;height:100%}
-  .dlg-tekst{padding:clamp(36px,4vw,56px);overflow-y:auto}
+  .kv-dialog{width:min(1180px,94vw);height:auto;max-height:88vh;margin:auto}
+  .dlg-in{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);max-height:88vh;overflow:hidden}
+  .dlg-tekst{padding:clamp(40px,4vw,60px);overflow-y:auto}
   .dlg-tekst h3{font-size:clamp(30px,2.6vw,42px)}
   .dlg-tekst>p{font-size:22px}
+  .dlg-raster{padding:8px 8px 8px 0;overflow-y:auto;align-content:start;gap:8px}
+  .dlg-raster:empty{display:none}
   .dlg-sluit{position:absolute;top:0;right:0;width:56px;height:56px}
   .dlg-nav{position:absolute;left:auto;right:56px;top:0;bottom:auto;width:auto;height:56px;
     border:0;padding:0 6px 0 18px;gap:8px;background:var(--wit)}
@@ -246,10 +235,6 @@ h4{font-size:16px}
   .dlg-tel{min-width:9ch;font-size:14px}
 }
 body.dlg-open{overflow:hidden}
-@media (prefers-reduced-motion:reduce){
-  .kv-slider img{transition:none}
-  .kv-slider img.is-on{animation:none}
-}
 .kv-num{position:absolute;top:0;left:0;background:var(--geel);color:var(--ink);font-family:'PP Frama','Source Sans 3',sans-serif;font-weight:200;
   font-size:20px;line-height:1;padding:8px 12px;z-index:2}
 .kv-fav{position:absolute;top:10px;right:10px;z-index:2;width:40px;height:40px;border:1px solid var(--lijn-2);
@@ -268,8 +253,11 @@ body.dlg-open{overflow:hidden}
 .kv-incl li{position:relative;padding-left:18px;font-size:16px;line-height:1.4}
 .kv-incl li::before{content:'';position:absolute;left:0;top:.6em;width:8px;height:8px;background:var(--geel)}
 .kv-meta{font-size:13px!important;text-transform:uppercase;letter-spacing:.1em;color:var(--ink);border-top:1px solid var(--lijn);padding-top:12px;margin-top:4px}
-.kv-min{display:flex;align-items:baseline;gap:8px;margin-top:10px;font-family:'PP Frama','Source Sans 3',sans-serif;font-weight:200;font-size:26px!important;line-height:1;color:var(--ink)}
-.kv-min span{font-family:'Source Sans 3',sans-serif;font-weight:400;font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-60)}
+.kv-min{align-self:flex-start;display:flex;align-items:baseline;gap:10px;margin-top:14px;padding:9px 14px;
+  background:var(--geel);font-family:'PP Frama','Source Sans 3',sans-serif;font-weight:200;
+  font-size:24px!important;line-height:1;color:var(--ink)}
+.kv-min span{font-family:'Source Sans 3',sans-serif;font-weight:400;font-size:12px;text-transform:uppercase;
+  letter-spacing:.08em;color:var(--ink)}
 .kv-door{margin-top:auto;padding-top:12px;font-family:Playfair,serif;font-size:19px}
 .kv-door span{display:block;font-family:'Source Sans 3',sans-serif;font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-60)}
 .kv.is-hide{display:none}
@@ -315,9 +303,6 @@ body.dlg-open{overflow:hidden}
     </div>
     <div class="hero-onder">
       <div class="hero-links">
-        <a class="hero-scroll" href="#programma" aria-label="Naar het programma">
-          <img src="assets/scroll-indicator-wit.svg" alt="">
-        </a>
         <div class="hero-cta">
           <a class="btn btn-geel" href="#kavels">De kavels</a>
           <a class="btn btn-lijn-licht" href="#programma">Het programma</a>
@@ -384,8 +369,8 @@ body.dlg-open{overflow:hidden}
     </div>
 
     <div class="kv-grid">
-      <article class="kv" data-id="k17">
-        <div class="kv-foto kv-foto--leeg"></div>
+      <article class="kv" data-id="k17" data-fotos="kavels/k17-v1.jpg|kavels/k17-v2.jpg|kavels/k17-v3.jpg|kavels/k17-v4.jpg|kavels/k17-v5.jpg">
+        <div class="kv-foto"><img src="kavels/k17.jpg" alt="KRUG Experience bij restaurant Flore**" loading="lazy"></div>
         <span class="kv-num">1</span>
         <button class="kv-open" data-open="k17" aria-label="Bekijk kavel 1: KRUG Experience bij restaurant Flore**"></button>
         <button class="kv-fav" aria-label="Zet kavel 1 op mijn lijst" data-fav="k17"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.49 4.04 3 5.5l7 7Z"/></svg></button>
@@ -400,7 +385,7 @@ body.dlg-open{overflow:hidden}
         </div>
       </article>
 
-      <article class="kv" data-id="k07">
+      <article class="kv" data-id="k07" data-fotos="kavels/k07-v1.jpg|kavels/k07-v2.jpg|kavels/k07-v3.jpg|kavels/k07-v4.jpg">
         <div class="kv-foto"><img src="kavels/k07.jpg" alt="Diner bij Da Vinci* met privé-optreden" loading="lazy"></div>
         <span class="kv-num">2</span>
         <button class="kv-open" data-open="k07" aria-label="Bekijk kavel 2: Diner bij Da Vinci* met privé-optreden"></button>
@@ -410,13 +395,13 @@ body.dlg-open{overflow:hidden}
           <h3>Diner bij Da Vinci* met privé-optreden</h3>
           <p>Aan tafel bij Margo Reuten en Petro Kools in Maasbracht.</p>
           <div class="kv-incl"><p class="kv-incl-t">Inclusief</p><ul><li>Volledig verzorgd diner bij Da Vinci* voor 10 personen</li><li>De mooiste wijnen uit de kelder</li><li>Miniconcert van de Limburgse tenor Ivo van der Bijl</li></ul></div>
-          <p class="kv-meta">10 PERSONEN</p>
+          
           <p class="kv-min"><span>Minimale opbrengst</span>&euro;&nbsp;3.500</p>
           <p class="kv-door"><span>Aangeboden door</span>Restaurant Da Vinci* en Ivo van der Bijl</p>
         </div>
       </article>
 
-      <article class="kv" data-id="k14">
+      <article class="kv" data-id="k14" data-fotos="">
         <div class="kv-foto kv-foto--leeg"></div>
         <span class="kv-num">3</span>
         <button class="kv-open" data-open="k14" aria-label="Bekijk kavel 3: Het Biertafelboek van Govert de Roos"></button>
@@ -432,7 +417,7 @@ body.dlg-open{overflow:hidden}
         </div>
       </article>
 
-      <article class="kv" data-id="k02">
+      <article class="kv" data-id="k02" data-fotos="kavels/k02-v1.jpg">
         <div class="kv-foto"><img src="kavels/k02.jpg" alt="Koetsentocht langs de Vecht" loading="lazy"></div>
         <span class="kv-num">4</span>
         <button class="kv-open" data-open="k02" aria-label="Bekijk kavel 4: Koetsentocht langs de Vecht"></button>
@@ -448,7 +433,7 @@ body.dlg-open{overflow:hidden}
         </div>
       </article>
 
-      <article class="kv" data-id="k03a">
+      <article class="kv" data-id="k03a" data-fotos="kavels/k03a-v1.jpg|kavels/k03a-v2.jpg|kavels/k03a-v3.jpg|kavels/k03a-v4.jpg">
         <div class="kv-foto"><img src="kavels/k03a.jpg" alt="Miniatuur KLM-huisje Rijksmuseum" loading="lazy"></div>
         <span class="kv-num">5A</span>
         <button class="kv-open" data-open="k03a" aria-label="Bekijk kavel 5A: Miniatuur KLM-huisje Rijksmuseum"></button>
@@ -464,7 +449,7 @@ body.dlg-open{overflow:hidden}
         </div>
       </article>
 
-      <article class="kv" data-id="k03b">
+      <article class="kv" data-id="k03b" data-fotos="kavels/k03b-v1.jpg|kavels/k03b-v2.jpg|kavels/k03b-v3.jpg|kavels/k03b-v4.jpg">
         <div class="kv-foto"><img src="kavels/k03b.jpg" alt="Miniatuur KLM-huisje Hotel Okura Amsterdam" loading="lazy"></div>
         <span class="kv-num">5B</span>
         <button class="kv-open" data-open="k03b" aria-label="Bekijk kavel 5B: Miniatuur KLM-huisje Hotel Okura Amsterdam"></button>
@@ -480,7 +465,7 @@ body.dlg-open{overflow:hidden}
         </div>
       </article>
 
-      <article class="kv" data-id="k04">
+      <article class="kv" data-id="k04" data-fotos="kavels/k04-v1.jpg|kavels/k04-v2.jpg|kavels/k04-v3.jpg|kavels/k04-v4.jpg">
         <div class="kv-foto"><img src="kavels/k04.jpg" alt="De Burgemeester × Moët &amp; Chandon en The House of Caviar" loading="lazy"></div>
         <span class="kv-num">6</span>
         <button class="kv-open" data-open="k04" aria-label="Bekijk kavel 6: De Burgemeester × Moët &amp; Chandon en The House of Caviar"></button>
@@ -490,13 +475,13 @@ body.dlg-open{overflow:hidden}
           <h3>De Burgemeester × Moët &amp; Chandon en The House of Caviar</h3>
           <p>Sander en Anne Spruit van sterrenrestaurant De Burgemeester koken bij u thuis.</p>
           <div class="kv-incl"><p class="kv-incl-t">Inclusief</p><ul><li>Volledig verzorgd 4-gangendiner voor 10 personen</li><li>Bijpassende wijnen</li><li>Champagneproeverij van Moët &amp; Chandon</li><li>Kaviaarproeverij van The House of Caviar</li></ul></div>
-          <p class="kv-meta">10 PERSONEN</p>
+          
           <p class="kv-min"><span>Minimale opbrengst</span>&euro;&nbsp;5.000</p>
           <p class="kv-door"><span>Aangeboden door</span>De Burgemeester*, Moët &amp; Chandon en The House of Caviar</p>
         </div>
       </article>
 
-      <article class="kv" data-id="k12">
+      <article class="kv" data-id="k12" data-fotos="kavels/k12-v1.jpg|kavels/k12-v2.jpg|kavels/k12-v3.jpg|kavels/k12-v4.jpg">
         <div class="kv-foto"><img src="kavels/k12.jpg" alt="Legends Lounge — PSV × Atlético Madrid" loading="lazy"></div>
         <span class="kv-num">7</span>
         <button class="kv-open" data-open="k12" aria-label="Bekijk kavel 7: Legends Lounge — PSV × Atlético Madrid"></button>
@@ -512,7 +497,7 @@ body.dlg-open{overflow:hidden}
         </div>
       </article>
 
-      <article class="kv" data-id="k13">
+      <article class="kv" data-id="k13" data-fotos="kavels/k13-v1.jpg|kavels/k13-v2.jpg|kavels/k13-v3.jpg">
         <div class="kv-foto"><img src="kavels/k13.jpg" alt="Legends Lounge — PSV × Atlético Madrid" loading="lazy"></div>
         <span class="kv-num">8</span>
         <button class="kv-open" data-open="k13" aria-label="Bekijk kavel 8: Legends Lounge — PSV × Atlético Madrid"></button>
@@ -528,7 +513,7 @@ body.dlg-open{overflow:hidden}
         </div>
       </article>
 
-      <article class="kv" data-id="k15">
+      <article class="kv" data-id="k15" data-fotos="kavels/k15-v1.jpg">
         <div class="kv-foto"><img src="kavels/k15.jpg" alt="Champions Lounge — Ajax op topniveau" loading="lazy"></div>
         <span class="kv-num">9</span>
         <button class="kv-open" data-open="k15" aria-label="Bekijk kavel 9: Champions Lounge — Ajax op topniveau"></button>
@@ -544,7 +529,7 @@ body.dlg-open{overflow:hidden}
         </div>
       </article>
 
-      <article class="kv" data-id="k06">
+      <article class="kv" data-id="k06" data-fotos="kavels/k06-v1.jpg|kavels/k06-v2.jpg|kavels/k06-v3.jpg|kavels/k06-v4.jpg">
         <div class="kv-foto"><img src="kavels/k06.jpg" alt="Taxirit in een Porsche 911 GT3 Cup" loading="lazy"></div>
         <span class="kv-num">10</span>
         <button class="kv-open" data-open="k06" aria-label="Bekijk kavel 10: Taxirit in een Porsche 911 GT3 Cup"></button>
@@ -554,13 +539,13 @@ body.dlg-open{overflow:hidden}
           <h3>Taxirit in een Porsche 911 GT3 Cup</h3>
           <p>De snelste taxirit van uw leven: ruim 500 pk over het circuit van Zandvoort.</p>
           <div class="kv-incl"><p class="kv-incl-t">Inclusief</p><ul><li>Rit in een Porsche 911 GT3 Cup, naast een ervaren coureur</li><li>Circuit Zandvoort, voor 4 personen</li><li>Volledig verzorgde lunch bij De Bokkedoorns** in de duinen</li></ul></div>
-          <p class="kv-meta">4 PERSONEN</p>
+          
           <p class="kv-min"><span>Minimale opbrengst</span>&euro;&nbsp;3.500</p>
           <p class="kv-door"><span>Aangeboden door</span>B&amp;R Motorsport en De Bokkedoorns**</p>
         </div>
       </article>
 
-      <article class="kv" data-id="k11">
+      <article class="kv" data-id="k11" data-fotos="kavels/k11-v1.jpg|kavels/k11-v2.jpg|kavels/k11-v3.jpg|kavels/k11-v4.jpg">
         <div class="kv-foto"><img src="kavels/k11.jpg" alt="Aan tafel met de oud-hoofdredacteur van Michelin Benelux" loading="lazy"></div>
         <span class="kv-num">11</span>
         <button class="kv-open" data-open="k11" aria-label="Bekijk kavel 11: Aan tafel met de oud-hoofdredacteur van Michelin Benelux"></button>
@@ -576,7 +561,7 @@ body.dlg-open{overflow:hidden}
         </div>
       </article>
 
-      <article class="kv" data-id="k01">
+      <article class="kv" data-id="k01" data-fotos="kavels/k01-v1.jpg|kavels/k01-v2.jpg">
         <div class="kv-foto"><img src="kavels/k01.jpg" alt="Net Alsof — VIP-arrangement Jochem Myjer" loading="lazy"></div>
         <span class="kv-num">12</span>
         <button class="kv-open" data-open="k01" aria-label="Bekijk kavel 12: Net Alsof — VIP-arrangement Jochem Myjer"></button>
@@ -592,8 +577,8 @@ body.dlg-open{overflow:hidden}
         </div>
       </article>
 
-      <article class="kv" data-id="k05">
-        <div class="kv-foto kv-slider" data-slider><img src="kavels/k05s1.jpg" alt="Huize Welgelegen in ARTIS" class="is-on" loading="lazy"><img src="kavels/k05s2.jpg" alt="Een luipaard in ARTIS" loading="lazy"><img src="kavels/k05s3.jpg" alt="Zebra en giraffes in ARTIS" loading="lazy"><img src="kavels/k05s4.jpg" alt="Het team van Restaurant Het Amsterdammertje*, dat de culinaire avond verzorgt" loading="lazy"><div class="kv-dots" role="tablist" aria-label="Beelden bij dit kavel"></div></div>
+      <article class="kv" data-id="k05" data-fotos="kavels/k05-v1.jpg|kavels/k05-v2.jpg|kavels/k05-v3.jpg|kavels/k05-v4.jpg|kavels/k05-v5.jpg">
+        <div class="kv-foto"><img src="kavels/k05.jpg" alt="Overnachten met uitzicht op de luipaarden" loading="lazy"></div>
         <span class="kv-num">13</span>
         <button class="kv-open" data-open="k05" aria-label="Bekijk kavel 13: Overnachten met uitzicht op de luipaarden"></button>
         <button class="kv-fav" aria-label="Zet kavel 13 op mijn lijst" data-fav="k05"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.49 4.04 3 5.5l7 7Z"/></svg></button>
@@ -602,14 +587,14 @@ body.dlg-open{overflow:hidden}
           <h3>Overnachten met uitzicht op de luipaarden</h3>
           <p>Een nacht in Huize Welgelegen in ARTIS — vanuit de masterbedroom zicht op de luipaarden.</p>
           <div class="kv-incl"><p class="kv-incl-t">Inclusief</p><ul><li>Overnachting voor 6 personen</li><li>Privérondleiding door ARTIS</li><li>Twee dagen toegang tot ARTIS, het Groote Museum en Micropia</li><li>Culinaire avond van Het Amsterdammertje*</li></ul></div>
-          <p class="kv-meta">6 PERSONEN</p>
+          
           <p class="kv-min"><span>Minimale opbrengst</span>&euro;&nbsp;5.000</p>
           <p class="kv-door"><span>Aangeboden door</span>ARTIS en Restaurant Het Amsterdammertje*</p>
         </div>
       </article>
 
-      <article class="kv" data-id="k10">
-        <div class="kv-foto kv-slider" data-slider><img src="kavels/k10.jpg" alt="Landhuishotel De Bloemenbeek" class="is-on" loading="lazy"><img src="kavels/k10s3.jpg" alt="Het landgoed met feesttent vanuit de lucht" loading="lazy"><img src="kavels/k10s2.jpg" alt="De helikopter waarmee u naar Zeeland vliegt" loading="lazy"><img src="kavels/k10s4.jpg" alt="Inter Scaldes vanuit de lucht" loading="lazy"><div class="kv-dots" role="tablist" aria-label="Beelden bij dit kavel"></div></div>
+      <article class="kv" data-id="k10" data-fotos="kavels/k10-v1.jpg|kavels/k10-v2.jpg|kavels/k10-v3.jpg|kavels/k10-v4.jpg|kavels/k10-v5.jpg">
+        <div class="kv-foto"><img src="kavels/k10.jpg" alt="Per helikopter van De Bloemenbeek naar Inter Scaldes" loading="lazy"></div>
         <span class="kv-num">14</span>
         <button class="kv-open" data-open="k10" aria-label="Bekijk kavel 14: Per helikopter van De Bloemenbeek naar Inter Scaldes"></button>
         <button class="kv-fav" aria-label="Zet kavel 14 op mijn lijst" data-fav="k10"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.49 4.04 3 5.5l7 7Z"/></svg></button>
@@ -624,7 +609,7 @@ body.dlg-open{overflow:hidden}
         </div>
       </article>
 
-      <article class="kv" data-id="k08">
+      <article class="kv" data-id="k08" data-fotos="kavels/k08-v1.jpg|kavels/k08-v2.jpg|kavels/k08-v3.jpg|kavels/k08-v4.jpg|kavels/k08-v5.jpg">
         <div class="kv-foto"><img src="kavels/k08.jpg" alt="Tafel op de black-tie VIP Night van MASTERS EXPO" loading="lazy"></div>
         <span class="kv-num">15</span>
         <button class="kv-open" data-open="k08" aria-label="Bekijk kavel 15: Tafel op de black-tie VIP Night van MASTERS EXPO"></button>
@@ -640,7 +625,7 @@ body.dlg-open{overflow:hidden}
         </div>
       </article>
 
-      <article class="kv" data-id="k16">
+      <article class="kv" data-id="k16" data-fotos="kavels/k16-v1.jpg|kavels/k16-v2.jpg|kavels/k16-v3.jpg|kavels/k16-v4.jpg|kavels/k16-v5.jpg">
         <div class="kv-foto"><img src="kavels/k16.jpg" alt="Collector’s edition — Ramses Shaffy" loading="lazy"></div>
         <span class="kv-num">16</span>
         <button class="kv-open" data-open="k16" aria-label="Bekijk kavel 16: Collector’s edition — Ramses Shaffy"></button>
@@ -656,7 +641,7 @@ body.dlg-open{overflow:hidden}
         </div>
       </article>
 
-      <article class="kv" data-id="k09">
+      <article class="kv" data-id="k09" data-fotos="kavels/k09-v1.jpg">
         <div class="kv-foto"><img src="kavels/k09.jpg" alt="Champagnelunch bij Aan de Poel**" loading="lazy"></div>
         <span class="kv-num">17</span>
         <button class="kv-open" data-open="k09" aria-label="Bekijk kavel 17: Champagnelunch bij Aan de Poel**"></button>
@@ -666,7 +651,7 @@ body.dlg-open{overflow:hidden}
           <h3>Champagnelunch bij Aan de Poel**</h3>
           <p>Aan tafel bij Stefan van Sprang en Robert Veuger in Amstelveen.</p>
           <div class="kv-incl"><p class="kv-incl-t">Inclusief</p><ul><li>Proeverij van Moët &amp; Chandon</li><li>Volledig verzorgde 5-gangenlunch voor 10 personen</li><li>Champagne en mooie wijnen</li></ul></div>
-          <p class="kv-meta">10 PERSONEN</p>
+          
           <p class="kv-min"><span>Minimale opbrengst</span>&euro;&nbsp;3.000</p>
           <p class="kv-door"><span>Aangeboden door</span>Aan de Poel** en Moët &amp; Chandon</p>
         </div>
@@ -698,8 +683,8 @@ body.dlg-open{overflow:hidden}
 
 <dialog class="kv-dialog" id="kavel-dialog" aria-label="Kavel">
   <div class="dlg-in">
-    <figure class="dlg-beeld" id="dlg-beeld"></figure>
     <div class="dlg-tekst" id="dlg-tekst"></div>
+    <div class="dlg-raster" id="dlg-raster"></div>
   </div>
   <div class="dlg-nav">
     <button type="button" id="dlg-vorige" aria-label="Vorig kavel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
@@ -719,36 +704,6 @@ body.dlg-open{overflow:hidden}
 <script>
 // beeldsliders: kruisvervaging plus langzame zoom, alleen als de kaart in beeld is
 const stil = matchMedia('(prefers-reduced-motion:reduce)');
-function maakSlider(sl){
-  const beelden=[...sl.querySelectorAll('img')];
-  if(beelden.length<2) return;
-  const dots=sl.querySelector('.kv-dots');
-  let i=0, timer=null;
-  beelden.forEach((b,n)=>{
-    const d=document.createElement('button');
-    d.type='button'; d.setAttribute('aria-label','Beeld '+(n+1));
-    d.className = n===0 ? 'is-on' : '';
-    d.addEventListener('click',e=>{e.preventDefault();toon(n);start();});
-    dots.appendChild(d);
-  });
-  function toon(n){
-    i=n;
-    beelden.forEach((b,k)=>{
-      b.classList.remove('is-on');
-      if(k===n){ void b.offsetWidth; b.classList.add('is-on'); }   // herstart de zoom
-    });
-    [...dots.children].forEach((d,k)=>d.classList.toggle('is-on',k===n));
-  }
-  function start(){
-    stop();
-    if(stil.matches) return;
-    toon(i);                                  // zoom opnieuw starten bij het beeld dat nu in beeld komt
-    timer=setInterval(()=>toon((i+1)%beelden.length),6000);
-  }
-  function stop(){ if(timer){clearInterval(timer); timer=null;} }
-  new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting?start():stop()),{threshold:.25}).observe(sl);
-}
-document.querySelectorAll('[data-slider]').forEach(maakSlider);
 
 const tabs=[...document.querySelectorAll('.tab')];
 const cards=[...document.querySelectorAll('.kv')];
@@ -808,7 +763,7 @@ if(hero){
 
 // een kavel in het groot: schermvullend op mobiel, een venster op desktop
 const dlg=document.getElementById('kavel-dialog');
-const dlgBeeld=document.getElementById('dlg-beeld');
+const dlgRaster=document.getElementById('dlg-raster');
 const dlgTekst=document.getElementById('dlg-tekst');
 const dlgTel=document.getElementById('dlg-tel');
 const dlgVorige=document.getElementById('dlg-vorige');
@@ -820,28 +775,26 @@ function zichtbareKaarten(){ return cards.filter(c=>!c.classList.contains('is-hi
 function vulDialoog(card){
   const lijst=zichtbareKaarten();
   open=lijst.indexOf(card);
-
-  const foto=card.querySelector('.kv-foto').cloneNode(true);
-  const dots=foto.querySelector('.kv-dots');
-  if(dots) dots.innerHTML='';                       // de stipjes worden opnieuw gemaakt
-  foto.querySelectorAll('img').forEach((b,n)=>{
-    b.classList.toggle('is-on', n===0);
-    b.loading='eager';
-  });
-  dlgBeeld.replaceChildren(foto);
-  if(foto.hasAttribute('data-slider')) maakSlider(foto);
+  const id=card.dataset.id;
 
   dlgTekst.innerHTML=card.querySelector('.kv-body').innerHTML;
-  const id=card.dataset.id;
   const hart=document.createElement('button');
   hart.type='button'; hart.className='dlg-hart'; hart.dataset.fav=id;
   hart.innerHTML=card.querySelector('.kv-fav').innerHTML+'<span>Op mijn lijst</span>';
   hart.addEventListener('click',()=>{ fav.has(id)?fav.delete(id):fav.add(id); sync(); });
   dlgTekst.appendChild(hart);
 
+  const fotos=(card.dataset.fotos||'').split('|').filter(Boolean);
+  dlgRaster.replaceChildren(...fotos.map(p=>{
+    const b=document.createElement('img');
+    b.src=p; b.loading='lazy'; b.alt=card.querySelector('h3').textContent;
+    return b;
+  }));
+
   dlgTel.textContent='Kavel '+card.querySelector('.kv-ronde').textContent.replace('Kavel ','')+' van '+lijst.length;
   dlgVorige.disabled = open<=0;
   dlgVolgende.disabled = open>=lijst.length-1;
+  dlgTekst.scrollTop=0; dlgRaster.scrollTop=0;
   dlg.querySelector('.dlg-in').scrollTop=0;
   sync();
 }
@@ -864,7 +817,7 @@ document.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',e
 document.getElementById('dlg-sluit').addEventListener('click',()=>dlg.close());
 dlgVorige.addEventListener('click',()=>blader(-1));
 dlgVolgende.addEventListener('click',()=>blader(1));
-dlg.addEventListener('close',()=>{ document.body.classList.remove('dlg-open'); dlgBeeld.replaceChildren(); });
+dlg.addEventListener('close',()=>{ document.body.classList.remove('dlg-open'); dlgRaster.replaceChildren(); });
 dlg.addEventListener('click',e=>{ if(e.target===dlg) dlg.close(); });   // klik naast het venster sluit
 addEventListener('keydown',e=>{
   if(!dlg.open) return;

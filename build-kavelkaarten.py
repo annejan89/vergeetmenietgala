@@ -10,11 +10,7 @@ import re
 
 KAVELS = json.load(open("kavels.json"))
 
-# meerdere beelden bij een kavel: dan wordt het een slider met langzame zoom
-FOTOS = {
-    "k05": ["kavels/k05s1.jpg", "kavels/k05s2.jpg", "kavels/k05s3.jpg", "kavels/k05s4.jpg"],
-    "k10": ["kavels/k10.jpg", "kavels/k10s3.jpg", "kavels/k10s2.jpg", "kavels/k10s4.jpg"],
-}
+FOTOSET = json.load(open("_orig/_fotoset.json")) if os.path.exists("_orig/_fotoset.json") else {}
 ALT = {
     "kavels/k05s1.jpg": "Huize Welgelegen in ARTIS",
     "kavels/k05s2.jpg": "Een luipaard in ARTIS",
@@ -38,18 +34,16 @@ def bedrag(n):
 
 
 def foto(k):
-    lijst = [p for p in FOTOS.get(k["id"], [f"kavels/{k['id']}.jpg"]) if os.path.exists(p)]
-    if not lijst:
+    hoofd = f"kavels/{k['id']}.jpg"
+    if not os.path.exists(hoofd):
         return '<div class="kv-foto kv-foto--leeg"></div>'
-    if len(lijst) == 1:
-        return (f'<div class="kv-foto"><img src="{lijst[0]}" alt="{e(k["titel"])}" '
-                f'loading="lazy"></div>')
-    imgs = "".join(
-        f'<img src="{p}" alt="{e(ALT.get(p, k["titel"]))}"'
-        f'{" class=\"is-on\"" if i == 0 else ""} loading="lazy">'
-        for i, p in enumerate(lijst))
-    return (f'<div class="kv-foto kv-slider" data-slider>{imgs}'
-            f'<div class="kv-dots" role="tablist" aria-label="Beelden bij dit kavel"></div></div>')
+    return (f'<div class="kv-foto"><img src="{hoofd}" alt="{e(k["titel"])}" loading="lazy"></div>')
+
+
+def raster(k):
+    """De vierkante beelden voor het raster in de detailweergave."""
+    fotos = [p for p in FOTOSET.get(k["id"], []) if "-v" in p and os.path.exists(p)]
+    return "|".join(fotos)
 
 
 def kaart(k):
@@ -60,7 +54,7 @@ def kaart(k):
     meta = f'<p class="kv-meta">{e(k["meta"])}</p>' if k.get("meta") else ""
     minimum = (f'<p class="kv-min"><span>Minimale opbrengst</span>{bedrag(k["minimum"])}</p>'
                if k.get("minimum") else "")
-    return f'''      <article class="kv" data-id="{k['id']}">
+    return f'''      <article class="kv" data-id="{k['id']}" data-fotos="{raster(k)}">
         {foto(k)}
         <span class="kv-num">{e(k['num'])}</span>
         <button class="kv-open" data-open="{k['id']}" aria-label="Bekijk kavel {e(k['num'])}: {e(k['titel'])}"></button>
