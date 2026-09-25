@@ -11,3 +11,4 @@ __pycache__/
 
 # aangeleverde bronfotos blijven lokaal
 Veilingkavels input (extern)/
+.playwright-mcp/

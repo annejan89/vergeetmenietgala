@@ -912,6 +912,13 @@ pill.addEventListener('click',()=>{const ft=document.querySelector('.tab-fav');s
 sync();
 applyFilter('all');
 
+// het logo brengt je met een vloeiende beweging terug naar boven
+document.querySelector('.nav-brand').addEventListener('click',e=>{
+  e.preventDefault();
+  const zacht=!matchMedia('(prefers-reduced-motion:reduce)').matches;
+  scrollTo({top:0, behavior: zacht ? 'smooth' : 'auto'});
+});
+
 // de nav is transparant zolang de hero in beeld is
 const nav=document.querySelector('.nav');
 const hero=document.getElementById('hero');
@@ -929,7 +936,11 @@ if(hero){
 
 // de veilingvoorwaarden
 const vwDlg=document.getElementById('vw-dialog');
-document.getElementById('vw-open').addEventListener('click',()=>{ vwDlg.showModal(); document.body.classList.add('dlg-open'); });
+document.getElementById('vw-open').addEventListener('click',()=>{
+  vwDlg.showModal();
+  vwDlg.querySelector('.vw-in').scrollTop=0;      // altijd bij het begin beginnen
+  document.body.classList.add('dlg-open');
+});
 document.getElementById('vw-sluit').addEventListener('click',()=>vwDlg.close());
 vwDlg.addEventListener('click',e=>{ if(e.target===vwDlg) vwDlg.close(); });
 vwDlg.addEventListener('close',()=>{ if(!dlg.open) document.body.classList.remove('dlg-open'); });
