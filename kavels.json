@@ -61,32 +61,16 @@
  },
  {
   "id": "k03a",
-  "num": "5A",
+  "num": "5",
   "titel": "Miniatuur KLM-huisje Rijksmuseum",
   "intro": "Een collectors item: de special edition van het Rijksmuseum, één van slechts honderd.",
   "meta": "2 PERSONEN",
   "bullets": [
    "Miniatuur KLM-huisje, special edition Rijksmuseum",
-   "Private rondleiding door het Rijksmuseum",
    "Volledig verzorgde lunch bij Restaurant Rijks*"
   ],
-  "aanbieder": "KLM, Rijksmuseum en Restaurant Rijks*",
+  "aanbieder": "KLM en Restaurant Rijks*",
   "slide": 29,
-  "minimum": 3500
- },
- {
-  "id": "k03b",
-  "num": "5B",
-  "titel": "Miniatuur KLM-huisje Hotel Okura Amsterdam",
-  "intro": "Het huisje van het huis waar we vanavond te gast zijn — ook één van honderd.",
-  "meta": "2 PERSONEN",
-  "bullets": [
-   "Miniatuur KLM-huisje, special edition Hotel Okura Amsterdam",
-   "Overnachting in een Royal of President Suite",
-   "Diner in Ciel Bleu**"
-  ],
-  "aanbieder": "Hotel Okura Amsterdam",
-  "slide": 30,
   "minimum": 3500
  },
  {
