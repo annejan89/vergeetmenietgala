@@ -237,19 +237,20 @@ h4{font-size:16px}
   .kv-dialog{width:min(1180px,94vw);height:auto;max-height:88vh;margin:auto}
   .dlg-in{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);grid-template-rows:minmax(0,1fr);
     max-height:88vh;overflow:hidden;padding-bottom:0}
-  .dlg-raster{order:0;display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:minmax(150px,1fr);
-    overflow-x:hidden;padding:8px 8px 8px 0;gap:8px;align-self:stretch}
-  .dlg-raster img{aspect-ratio:auto;height:100%;min-height:0}
+  .dlg-raster{order:0;display:grid;grid-template-columns:1fr 1fr;align-content:start;
+    overflow-x:hidden;padding:8px 8px 8px 0;gap:8px;align-self:stretch;background:var(--beige-donker)}
+  .dlg-raster img{aspect-ratio:1/1;height:auto;width:100%}
   .dlg-raster img{flex:none;width:100%}
   .dlg-raster img:first-child{grid-column:1/-1}
-  .dlg-tekst{padding:clamp(40px,4vw,60px);overflow-y:auto}
+  .dlg-tekst{padding:clamp(40px,4vw,60px);padding-bottom:calc(clamp(40px,4vw,60px) + 56px);overflow-y:auto}
   .dlg-tekst h3{font-size:clamp(30px,2.6vw,42px)}
   .dlg-tekst>p{font-size:22px}
-  .dlg-raster{padding:8px 8px 8px 0;overflow-y:auto;align-content:stretch;gap:8px}
+  .dlg-raster{padding:8px 8px 8px 0;overflow-y:auto;align-content:start;gap:8px}
   .dlg-raster:empty{display:none}
   .dlg-sluit{position:absolute;top:0;right:0;width:56px;height:56px}
-  .dlg-nav{position:absolute;left:auto;right:56px;top:0;bottom:auto;width:auto;height:56px;
-    border:0;padding:0 6px 0 18px;gap:8px;background:var(--wit)}
+  .dlg-nav{position:absolute;left:0;right:auto;top:auto;bottom:0;width:54.5%;height:64px;
+    justify-content:flex-start;border:0;padding:0 18px 0 clamp(28px,3vw,46px);gap:8px;
+    background:linear-gradient(180deg,rgba(255,255,255,0) 0%,var(--wit) 28%)}
   .dlg-nav button{width:40px;height:40px;border:0}
   .dlg-tel{min-width:9ch;font-size:14px}
 }
