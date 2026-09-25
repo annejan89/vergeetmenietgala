@@ -254,10 +254,13 @@ h4{font-size:16px}
   .kv-dialog{width:min(1180px,94vw);height:auto;min-height:min(88vh,720px);max-height:88vh;margin:auto}
   .dlg-in{display:grid;grid-template-columns:minmax(0,6.8fr) minmax(0,3.2fr);grid-template-rows:minmax(0,1fr);
     max-height:88vh;overflow:hidden;padding-bottom:0}
-  .dlg-raster{order:0;display:grid;grid-template-columns:1fr 1fr;align-content:start;
-    overflow-x:hidden;padding:8px 8px 8px 0;gap:6px;align-self:stretch;background:var(--wit)}
-  .dlg-raster img{aspect-ratio:1/1;height:auto;width:100%}
-  .dlg-raster:has(img:nth-child(7)){grid-template-columns:repeat(3,1fr)}
+  /* de tegels passen zich aan de hoogte van het venster aan, zodat alles in beeld blijft */
+  .dlg-raster{order:0;display:grid;justify-content:center;align-content:start;
+    grid-template-columns:repeat(2, var(--tegel));grid-auto-rows:var(--tegel);
+    overflow:hidden;padding:8px 8px 8px 0;gap:6px;align-self:stretch;background:var(--wit);
+    --tegel:calc((100% - 14px)/2)}
+  .dlg-raster img{aspect-ratio:1/1;width:100%;height:100%;object-fit:cover}
+  .dlg-raster img:first-child{grid-column:span 2;grid-row:span 2}
   .dlg-raster img{flex:none;width:100%}
   .dlg-raster img:first-child{grid-column:1/-1}
   .dlg-tekst{padding:clamp(40px,4vw,60px);padding-bottom:calc(clamp(40px,4vw,60px) + 56px);overflow-y:auto}
@@ -828,6 +831,7 @@ function vulDialoog(card){
     return b;
   });
   dlgRaster.replaceChildren(...beelden);
+  tegelMaat();
   zoomTimers.forEach(clearTimeout); zoomTimers.length=0;
   if(stil.matches){
     beelden.forEach(b=>b.classList.add('in'));
@@ -850,10 +854,22 @@ function vulDialoog(card){
   sync();
 }
 
+// de tegels krimpen tot alles in het venster past
+function tegelMaat(){
+  const aantal=dlgRaster.children.length;
+  if(!aantal || innerWidth<860) return;
+  const rijen=Math.ceil((aantal-1)/2), gat=6;
+  const breed=dlgRaster.clientWidth-8, hoog=dlgRaster.clientHeight-16;
+  const maat=Math.floor(Math.min((breed-gat)/2, (hoog-gat*(1+rijen))/(2+rijen)));
+  dlgRaster.style.setProperty('--tegel', Math.max(80,maat)+'px');
+}
+addEventListener('resize', tegelMaat);
+
 function openKavel(card){
   vulDialoog(card);
   if(!dlg.open) dlg.showModal();
   document.body.classList.add('dlg-open');
+  tegelMaat();                                 // pas na het openen staan de maten vast
 }
 function blader(stap){
   const lijst=zichtbareKaarten();
