@@ -64,16 +64,20 @@ h4{font-size:16px}
 .btn-lijn-licht:hover{background:rgba(246,244,235,.12)}
 .btn-groot{font-size:19px;padding:14px 32px}
 
-/* nav */
-.nav{position:sticky;top:0;z-index:var(--z-nav);display:flex;align-items:center;justify-content:space-between;gap:16px;
-  padding:10px 20px;background:rgba(246,244,235,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--lijn)}
-.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:Playfair,serif;font-size:17px}
+/* nav: blijft in beeld, transparant zolang de hero eronder ligt */
+.nav{position:fixed;top:0;left:0;right:0;z-index:var(--z-nav);display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:10px 20px;background:rgba(246,244,235,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--lijn);
+  transition:background .3s,border-color .3s,color .3s}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:Playfair,serif;font-size:17px;
+  transition:opacity .3s}
 .nav-brand img{width:34px;height:34px;object-fit:contain}
 .nav-links{display:flex;align-items:center;gap:20px}
-.nav-links a{text-decoration:none;font-size:16px;color:var(--ink)}
+.nav-links a{text-decoration:none;font-size:16px;color:inherit}
 .nav-links a:hover{text-decoration:underline;text-underline-offset:4px}
-.nav-cta{background:var(--geel);padding:8px 16px}
+.nav-cta{background:var(--geel);color:var(--ink)!important;padding:8px 16px}
 .nav-cta:hover{background:var(--geel-licht);text-decoration:none!important}
+.nav--transparant{background:transparent;backdrop-filter:none;border-color:transparent;color:var(--wit)}
+.nav--transparant .nav-brand{opacity:0;pointer-events:none}
 @media(max-width:860px){
   .nav-brand span{display:none}
   .nav-links{gap:12px;overflow-x:auto}
@@ -81,17 +85,26 @@ h4{font-size:16px}
   .nav-links .hide-s{display:none}
 }
 
-/* hero */
-.hero{background:var(--ink);color:var(--beige);padding:72px 0 96px;overflow:hidden}
-.hero .wrap{position:relative}
-.hero-bloem{position:absolute;right:-40px;top:-20px;width:min(340px,42vw);opacity:.15;pointer-events:none}
-.hero-lbl{color:var(--geel);font-size:15px;font-weight:400;text-transform:uppercase;letter-spacing:.025em}
-.hero h1{margin:12px 0 4px;color:var(--beige);max-width:16ch}
-.hero .display{color:var(--geel);margin:24px 0 8px}
-.hero-meta{color:var(--beige);max-width:46ch}
-.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
-.golf{display:block;width:100%;height:32px}
-@media(min-width:791px){.hero{padding:96px 0 120px}.golf{height:44px}}
+/* hero: foto over het volle scherm, tekst in de hoeken */
+.hero{position:relative;min-height:100svh;display:flex;color:var(--wit);overflow:hidden}
+.hero-foto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-waas{position:absolute;inset:0;background:linear-gradient(180deg,rgba(39,37,28,.42) 0%,rgba(39,37,28,.12) 38%,rgba(39,37,28,.55) 100%)}
+.hero-in{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:space-between;
+  padding:clamp(72px,9vh,104px) clamp(20px,3vw,40px) clamp(28px,4vw,48px)}
+.hero-top{display:flex;align-items:flex-start;gap:clamp(16px,2.5vw,32px)}
+.hero-logo{width:clamp(88px,9vw,128px);height:auto}
+.hero-datum{font-family:'PP Frama','Source Sans 3',sans-serif;font-weight:200;
+  font-size:clamp(34px,5.4vw,72px);line-height:1.02;color:var(--wit)}
+.hero-onder{display:flex;align-items:flex-end;justify-content:space-between;gap:24px}
+.hero-scroll{display:block;flex:none;width:clamp(44px,4vw,64px);opacity:.85;transition:transform .3s,opacity .2s}
+.hero-scroll:hover{opacity:1;transform:translateY(4px)}
+.hero-claim{font-family:Playfair,Georgia,serif;font-weight:500;line-height:1.12;text-align:right;
+  font-size:clamp(22px,3.4vw,52px);text-wrap:balance}
+@media(max-width:620px){
+  .hero-onder{align-items:flex-end}
+  .hero-scroll{width:40px}
+  .hero-claim{font-size:22px}
+}
 
 /* secties */
 .sec{padding:64px 0}
@@ -256,6 +269,8 @@ body.dlg-open{overflow:hidden}
   box-shadow:0 0 60px 10px rgba(251,210,66,.35)}
 .shortlist svg{width:18px;height:18px;fill:var(--ink)}
 .shortlist[hidden]{display:none}
+.shortlist.is-weg{opacity:0;pointer-events:none;transform:translateY(8px)}
+.shortlist{transition:opacity .3s,transform .3s}
 @media print{.nav,.shortlist,.tabs{display:none}.kv{break-inside:avoid}}
 </style>
 </head>
@@ -269,20 +284,22 @@ body.dlg-open{overflow:hidden}
   </nav>
 </header>
 
-<section class="hero">
-  <div class="wrap">
-    <img class="hero-bloem" src="assets/bloem-patroon-geel.svg" alt="">
-    <p class="hero-lbl">Het eerste culinaire gala voor Alzheimer Nederland</p>
-    <h1>Vergeet Mij Niet Gala</h1>
-    <p class="display">06.10.2026</p>
-    <p class="hero-meta">Grand Ballroom, Hotel Okura Amsterdam. Inloop vanaf 17:30 uur. Achttien kavels onder de hamer.</p>
-    <div class="hero-cta">
-      <a class="btn btn-geel btn-groot" href="#kavels">De kavels</a>
-      <a class="btn btn-lijn-licht" href="#programma">Het programma</a>
+<section class="hero" id="hero">
+  <img class="hero-foto" src="assets/hero-bloemen.webp" alt="" fetchpriority="high">
+  <div class="hero-waas"></div>
+  <div class="hero-in">
+    <div class="hero-top">
+      <img class="hero-logo" src="assets/logo-geel.png" alt="Vergeet Mij Niet Gala">
+      <p class="hero-datum">6<br>oktober<br>2026</p>
+    </div>
+    <div class="hero-onder">
+      <a class="hero-scroll" href="#programma" aria-label="Naar het programma">
+        <img src="assets/scroll-indicator-wit.svg" alt="">
+      </a>
+      <p class="hero-claim">Samen komen wij in actie,<br>voor Alzheimer Nederland</p>
     </div>
   </div>
 </section>
-<svg class="golf" viewBox="0 0 1440 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0H1440V0Q1080 40 720 40Q360 40 0 0Z" fill="#27251C"></path></svg>
 
 <section class="sec" id="programma">
   <div class="wrap">
@@ -746,6 +763,21 @@ document.querySelectorAll('[data-fav]').forEach(b=>b.addEventListener('click',e=
 pill.addEventListener('click',()=>{const ft=document.querySelector('.tab-fav');setTab(ft);applyFilter('fav');});
 sync();
 applyFilter('all');
+
+// de nav is transparant zolang de hero in beeld is
+const nav=document.querySelector('.nav');
+const hero=document.getElementById('hero');
+if(hero){
+  const pill2=document.getElementById('shortlist');
+  function navStand(){
+    const opHero = hero.getBoundingClientRect().bottom > nav.offsetHeight + 8;
+    nav.classList.toggle('nav--transparant', opHero);
+    pill2.classList.toggle('is-weg', opHero);
+  }
+  addEventListener('scroll', navStand, {passive:true});
+  addEventListener('resize', navStand);
+  navStand();
+}
 
 // een kavel in het groot: schermvullend op mobiel, een venster op desktop
 const dlg=document.getElementById('kavel-dialog');
