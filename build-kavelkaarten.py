@@ -33,11 +33,18 @@ def bedrag(n):
     return f"&euro;&nbsp;{n:,}".replace(",", ".")
 
 
+CAMERA = ('<svg viewBox="0 0 24 24" aria-hidden="true">'
+          '<rect x="3" y="7" width="18" height="13"/><path d="M8 7l1.6-3h4.8L16 7"/>'
+          '<circle cx="12" cy="13.5" r="3.6"/></svg>')
+
+
 def foto(k):
     hoofd = f"kavels/{k['id']}.jpg"
     if not os.path.exists(hoofd):
         return '<div class="kv-foto kv-foto--leeg"></div>'
-    return (f'<div class="kv-foto"><img src="{hoofd}" alt="{e(k["titel"])}" loading="lazy"></div>')
+    aantal = len([p for p in FOTOSET.get(k["id"], []) if "-v" in p])
+    meer = (f'<span class="kv-meer">{CAMERA}{aantal}</span>' if aantal > 1 else "")
+    return (f'<div class="kv-foto"><img src="{hoofd}" alt="{e(k["titel"])}" loading="lazy">{meer}</div>')
 
 
 def raster(k):
