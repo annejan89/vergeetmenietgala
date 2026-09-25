@@ -12,13 +12,14 @@ KAVELS = json.load(open("kavels.json"))
 
 # meerdere beelden bij een kavel: dan wordt het een slider met langzame zoom
 FOTOS = {
-    "k05": ["kavels/k05s1.jpg", "kavels/k05s2.jpg", "kavels/k05s3.jpg"],
+    "k05": ["kavels/k05s1.jpg", "kavels/k05s2.jpg", "kavels/k05s3.jpg", "kavels/k05s4.jpg"],
     "k10": ["kavels/k10.jpg", "kavels/k10s3.jpg", "kavels/k10s2.jpg", "kavels/k10s4.jpg"],
 }
 ALT = {
     "kavels/k05s1.jpg": "Huize Welgelegen in ARTIS",
     "kavels/k05s2.jpg": "Een luipaard in ARTIS",
     "kavels/k05s3.jpg": "Zebra en giraffes in ARTIS",
+    "kavels/k05s4.jpg": "Het team van Restaurant Het Amsterdammertje*, dat de culinaire avond verzorgt",
     "kavels/k10.jpg": "Landhuishotel De Bloemenbeek",
     "kavels/k10s3.jpg": "Het landgoed met feesttent vanuit de lucht",
     "kavels/k10s2.jpg": "De helikopter waarmee u naar Zeeland vliegt",
@@ -85,10 +86,6 @@ def bouw(pad="index.html"):
     start = s.index('    <div class="kv-grid">')
     eind = s.index('\n  </div>\n</section>', start)
     s = s[:start] + grid + s[eind:]
-
-    # het aantal kavels in de inleiding meelopen laten
-    s = re.sub(r'<p>[A-Za-z]+ kavels, in een ronde\.',
-               f'<p>{len(KAVELS)} kavels, in een ronde.', s)
     open(pad, "w").write(s)
     return len(KAVELS)
 

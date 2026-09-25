@@ -113,11 +113,6 @@ h4{font-size:16px}
 .pg-extra{margin-top:40px;background:var(--wit);padding:24px;max-width:760px}
 @media(min-width:791px){.pg li{grid-template-columns:120px 1fr;gap:32px;padding:32px 0}.pg-t{font-size:34px}.pg-extra{padding:32px}}
 
-/* spelregels van de veiling */
-.spelregels{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px 28px;margin-bottom:40px;padding-bottom:32px;border-bottom:1px solid var(--lijn)}
-.spelregels li{display:flex;align-items:baseline;gap:10px;font-size:17px}
-.spelregels b{font-family:'PP Frama','Source Sans 3',sans-serif;font-weight:200;font-size:24px;color:var(--ink-60)}
-
 /* kavels */
 .tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
 .tab{font-family:'Source Sans 3',sans-serif;font-size:16px;color:var(--ink);background:transparent;border:1px solid var(--lijn-2);
@@ -335,16 +330,9 @@ body.dlg-open{overflow:hidden}
     <header class="sec-head">
       <p class="lbl">De veiling</p>
       <h2>De kavels van vanavond<span class="streep"></span></h2>
-      <p>18 kavels, in een ronde. Tik op het hartje voor uw eigen lijst.</p>
     </header>
 
 
-    <ol class="spelregels">
-      <li><b>1</b> Bordje omhoog tot de veilingmeester u ziet</li>
-      <li><b>2</b> Samen bieden met de tafel mag</li>
-      <li><b>3</b> Bij de hamerslag is het kavel van u</li>
-      <li><b>4</b> De factuur volgt na de avond</li>
-    </ol>
 
     <div class="tabs" role="tablist">
       <button class="tab is-on" data-f="all">Alle kavels</button>
@@ -561,7 +549,7 @@ body.dlg-open{overflow:hidden}
       </article>
 
       <article class="kv" data-id="k05">
-        <div class="kv-foto kv-slider" data-slider><img src="kavels/k05s1.jpg" alt="Huize Welgelegen in ARTIS" class="is-on" loading="lazy"><img src="kavels/k05s2.jpg" alt="Een luipaard in ARTIS" loading="lazy"><img src="kavels/k05s3.jpg" alt="Zebra en giraffes in ARTIS" loading="lazy"><div class="kv-dots" role="tablist" aria-label="Beelden bij dit kavel"></div></div>
+        <div class="kv-foto kv-slider" data-slider><img src="kavels/k05s1.jpg" alt="Huize Welgelegen in ARTIS" class="is-on" loading="lazy"><img src="kavels/k05s2.jpg" alt="Een luipaard in ARTIS" loading="lazy"><img src="kavels/k05s3.jpg" alt="Zebra en giraffes in ARTIS" loading="lazy"><img src="kavels/k05s4.jpg" alt="Het team van Restaurant Het Amsterdammertje*, dat de culinaire avond verzorgt" loading="lazy"><div class="kv-dots" role="tablist" aria-label="Beelden bij dit kavel"></div></div>
         <span class="kv-num">13</span>
         <button class="kv-open" data-open="k05" aria-label="Bekijk kavel 13: Overnachten met uitzicht op de luipaarden"></button>
         <button class="kv-fav" aria-label="Zet kavel 13 op mijn lijst" data-fav="k05"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.49 4.04 3 5.5l7 7Z"/></svg></button>
